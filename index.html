@@ -2970,28 +2970,39 @@ function parseAllSheets(json) {
   // ツアーシート処理
   const tourRows = json['ツアー'];
   if (tourRows) {
-    const struct = SHEET_STRUCTURE['ツアー'];
-    // 会社別キーに分解（HIS特典東芝栄町=col4, HIS特典東芝札幌駅=col5...）
-    const tourKeys = ['his_t1','his_t2','his_t3','his_t4','his_n1','his_n2','his_n3','his_n4',
-                      'gas_t1','gas_t2','gas_t3','gas_t4','gas_t5','gas_t6','gas_t7',
-                      'han_t1','han_f1','jtn_1','jtn_2','jtn_3','jtn_4','jtn_5',
-                      'jtb_1','club_1','club_2','hot1','hot2','ts1'];
-    for (let i = tourRows.length - 1; i >= 6; i--) {
-      const row = tourRows[i];
-      let hasData = false;
-      struct.dataCols.forEach(ci => { if (parseFloat(row[ci]) > 0) hasData = true; });
-      if (hasData) {
-        struct.dataCols.forEach((ci, idx) => {
-          const key = tourKeys[idx];
-          if (key) busTotals[key] = parseFloat(row[ci]) || 0;
-        });
-        break;
+    // スプレッドシート列(index) → bus-inputのdata-key 正しいマッピング
+    // ツアーも累計入力 → 列ごとに最後に入力された値を取得
+    const tourMapping = [
+      [4,  'his_t1'],  // HIS特典東芝 栄町（index4）
+      [5,  'his_t2'],  // HIS特典東芝 札幌駅（index5）
+      [6,  'his_t3'],  // HIS特典椅子 栄町（index6）
+      [7,  'his_t4'],  // HIS特典椅子 札幌駅（index7）
+      [8,  'his_n1'],  // HIS東芝 栄町（index8）
+      [9,  'his_n2'],  // HIS東芝 札幌駅（index9）
+      [10, 'his_n3'],  // HIS椅子 栄町（index10）
+      [11, 'his_n4'],  // HIS椅子 札幌駅（index11）
+      [19, 'han_t1'],  // 阪急ツアー 芝席（index19）
+      [20, 'han_f1'],  // 阪急フリー 芝席（index20）
+      [21, 'jtn_1'],   // JTN外商 椅子席（index21）
+      [23, 'jtn_2'],   // JTN外商 エキサイティング（index23）
+      [24, 'jtn_3'],   // JTN外商 テーブル椅子（index24）
+      [25, 'jtb_1'],   // JTB 芝席（index25）
+      [26, 'club_1'],  // クラツー 芝席（index26）
+    ];
+
+    tourMapping.forEach(([ci, key]) => {
+      let lastVal = 0;
+      for (let i = tourRows.length - 1; i >= 6; i--) {
+        const v = parseFloat(tourRows[i][ci]);
+        if (!isNaN(v) && v > 0) { lastVal = v; break; }
       }
-    }
-    // ツアー合計
+      busTotals[key] = lastVal;
+    });
+
+    // ツアー合計 = 日計列(index31)の最新値（累計入力）
     pgTotals['ツアー'] = 0;
     for (let i = tourRows.length - 1; i >= 6; i--) {
-      const v = parseFloat(tourRows[i][struct.totalCol]);
+      const v = parseFloat(tourRows[i][31]);
       if (!isNaN(v) && v > 0) { pgTotals['ツアー'] = v; break; }
     }
   }
@@ -3077,15 +3088,19 @@ function parseAllSheets(json) {
     console.log('[DEBUG] ②期間 col4:', ph2vals[4], ' col11:', ph2vals[11]);
   }
 
-  // 各フェーズの列ごと最終値を返すヘルパー
+  // 各フェーズの列ごと最終値を返すヘルパー（差分計算）
+  // 累計入力なので: ①=①期間末値、②=②期間末値-①期間末値、③=③期間末値-②期間末値
   const getPhaseRows = (rows) => {
+    // ①終了時点の累計（①開始〜①終了で最後に値がある行）
     const v1 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['①']);
-    const v2 = getPhaseColValues(rows, PHASE_STARTS['②'], PHASE_ENDS['②']);
-    const v3 = getPhaseColValues(rows, PHASE_STARTS['③'], PHASE_ENDS['③']);
+    // ②終了時点の累計（①開始〜②終了まで全体で最後の値）
+    const v1to2 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['②']);
+    // ③終了時点の累計
+    const v1to3 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['③']);
     return {
       ph1: (ci) => v1[ci] || 0,
-      ph2: (ci) => v2[ci] || 0,
-      ph3: (ci) => v3[ci] || 0,
+      ph2: (ci) => Math.max(0, (v1to2[ci]||0) - (v1[ci]||0)),
+      ph3: (ci) => Math.max(0, (v1to3[ci]||0) - (v1to2[ci]||0)),
     };
   };
 
@@ -3145,55 +3160,53 @@ function parseAllSheets(json) {
     setVal('c9', 'kk', kk.ph3(8));
   }
 
-  // inputへの反映後にcalcSalesを実行
-  calcSales();
-
-  const totalPg = (pgTotals['ローチケ']||0) + (pgTotals['楽チケ']||0) +
-                  (pgTotals['楽天Exp']||0) + (pgTotals['KKDAY']||0) + (pgTotals['ツアー']||0);
-  const totalBus = pgTotals['ツアー'] || 0;
-
-  // bus-inputキーに反映
+  // ── bus-inputへの反映（calcSalesより前に実行） ──
   Object.entries(busTotals).forEach(([key, val]) => {
     const el = document.querySelector(`.bus-input[data-key="${key}"]`);
     if (el) el.value = val || 0;
   });
+  console.log('[DEBUG] busTotals:', JSON.stringify(busTotals));
+  console.log('[DEBUG] his_n1 el value:', document.querySelector('.bus-input[data-key="his_n1"]')?.value);
 
-  // KPIサマリーを直接更新
-  const kpiPg = document.getElementById('kpi-pg-total');
-  if (kpiPg) kpiPg.textContent = totalPg.toLocaleString() + '枚';
-  const pgBar = document.getElementById('kpi-pg-bar');
-  if (pgBar) pgBar.style.width = Math.min(100, (totalPg/21228*100).toFixed(1)) + '%';
-  const pgRate = document.getElementById('kpi-pg-rate');
-  if (pgRate) {
-    const r = (totalPg/21228*100).toFixed(1);
-    pgRate.textContent = r + '% 達成';
-    pgRate.style.color = r >= 100 ? 'var(--green)' : r >= 80 ? 'var(--gold)' : 'var(--sub)';
-  }
-  const breakRate = document.getElementById('kpi-break-rate');
-  if (breakRate) breakRate.textContent = (totalPg/16920*100).toFixed(1) + '%';
-  const breakBar = document.getElementById('kpi-break-bar');
-  if (breakBar) breakBar.style.width = Math.min(100, (totalPg/16920*100).toFixed(1)) + '%';
-  const kpiBus = document.getElementById('kpi-bus-total');
-  if (kpiBus) kpiBus.textContent = totalBus.toLocaleString() + '枚';
+  // 全input反映後にcalcSalesを実行
+  calcSales();
 
-  // グラフ更新
-  const pgRevenue = (pgTotals['ローチケ']||0)*7000 + (pgTotals['楽チケ']||0)*7000 +
-                    (pgTotals['楽天Exp']||0)*5500 + (pgTotals['KKDAY']||0)*5500;
-  updateSalesCharts({
-    pgTotal: totalPg, busTotal: totalBus, jimuTotal: 0,
-    grandTotal: totalPg + totalBus,
-    pgRevenue, busRevenue: totalBus * 6000,
-    pgRows: {}, colTotals: {
-      rc: pgTotals['ローチケ']||0,
-      rt: pgTotals['楽チケ']||0,
-      rx: pgTotals['楽天Exp']||0,
-      kk: pgTotals['KKDAY']||0,
+  // KPIサマリー上段をcalcSales後の画面値から更新
+  setTimeout(() => {
+    const pgVal  = parseInt(document.getElementById('pg-grand-total')?.textContent?.replace(/,/g,'')) || 0;
+    const busVal = parseInt(document.getElementById('bus-grand-total')?.textContent?.replace(/[^0-9]/g,'')) || 0;
+    const grand  = pgVal + busVal;
+
+    const kpiPg = document.getElementById('kpi-pg-total');
+    if (kpiPg) kpiPg.textContent = grand.toLocaleString() + '枚';
+    const pgBar = document.getElementById('kpi-pg-bar');
+    if (pgBar) pgBar.style.width = Math.min(100, (grand/21228*100).toFixed(1)) + '%';
+    const pgRate = document.getElementById('kpi-pg-rate');
+    if (pgRate) {
+      const r = (grand/21228*100).toFixed(1);
+      pgRate.textContent = r + '% 達成';
+      pgRate.style.color = r >= 100 ? 'var(--green)' : r >= 80 ? 'var(--gold)' : 'var(--sub)';
     }
-  });
+    const breakRate = document.getElementById('kpi-break-rate');
+    if (breakRate) breakRate.textContent = (grand/16920*100).toFixed(1) + '%';
+    const breakBar = document.getElementById('kpi-break-bar');
+    if (breakBar) breakBar.style.width = Math.min(100, (grand/16920*100).toFixed(1)) + '%';
 
-  // pg-grand-totalも更新
-  const pgGrand = document.getElementById('pg-grand-total');
-  if (pgGrand) pgGrand.textContent = totalPg.toLocaleString();
+    // グラフ更新
+    const pgRevenue = (pgTotals['ローチケ']||0)*7000 + (pgTotals['楽チケ']||0)*7000 +
+                      (pgTotals['楽天Exp']||0)*5500 + (pgTotals['KKDAY']||0)*5500;
+    updateSalesCharts({
+      pgTotal: pgVal, busTotal: busVal, jimuTotal: 0,
+      grandTotal: grand,
+      pgRevenue, busRevenue: busVal * 6000,
+      pgRows: {}, colTotals: {
+        rc: pgTotals['ローチケ']||0,
+        rt: pgTotals['楽チケ']||0,
+        rx: pgTotals['楽天Exp']||0,
+        kk: pgTotals['KKDAY']||0,
+      }
+    });
+  }, 100);
 }
 
 function parseWeeklyFromArray(rows) {
@@ -3227,97 +3240,6 @@ function parseWeeklyData(csvText) {
   window._weeklySalesCache = weekly;
 }
 
-function parseCsvAndApply(csvText) {
-  // CSVをパース
-  const rows = csvText.split('\n').map(r => r.split(',').map(v => v.replace(/^"|"$/g, '').trim()));
-
-  // 日付列（B列=index1）・各PG列のインデックスを確認
-  // 日次入力シートの列構成：
-  // A=余白(0), B=日付(1), C=曜日(2), D=フェーズ(3)
-  // E=ローチケ芝(4), F=楽チケ芝(5), G=楽天Exp芝(6), H=KKDAY芝(7)
-  // I=ローチケ椅子(8), J=楽チケ椅子(9), K=楽天Exp椅子(10), L=KKDAY椅子(11)
-  // M=HISバス(12), N=ほっとバス(13), O=クラブツーリズム(14), P=阪急(15), Q=その他バス(16)
-  // R=日計(17), S=累計(18), T=達成率(19)
-
-  const colMap = {
-    rc_shiba: 4, rt_shiba: 5, rx_shiba: 6, kk_shiba: 7,
-    rc_isu: 8,   rt_isu: 9,   rx_isu: 10,  kk_isu: 11,
-    his: 12, hot: 13, club: 14, han: 15, other_bus: 16
-  };
-
-  // フェーズ判定
-  const phaseMap = {
-    '①FC先行': ['p1','p2'],  // 芝・椅子
-    '②超早割': ['p1','p2'],
-    '③早割':   ['p4','p6'],
-    '④一般':   ['p7','p8'],
-  };
-
-  // 集計用オブジェクト
-  const totals = {
-    p1:{rc:0,rt:0,rx:0,kk:0}, p2:{rc:0,rt:0,rx:0,kk:0},
-    p3:{rc:0,rt:0,rx:0,kk:0}, p4:{rc:0,rt:0,rx:0,kk:0},
-    p5:{rc:0,rt:0,rx:0,kk:0}, p6:{rc:0,rt:0,rx:0,kk:0},
-    p7:{rc:0,rt:0,rx:0,kk:0}, p8:{rc:0,rt:0,rx:0,kk:0},
-  };
-  const busTotals = {his1:0, his2:0, his3:0, his4:0, hot1:0, hot2:0, club1:0, club2:0, han1:0, han2:0, jtn:0};
-
-  // データ行を処理（ヘッダー行をスキップ）
-  let dataStarted = false;
-  rows.forEach(row => {
-    const dateVal = row[1];
-    const phase = row[3];
-    if (!dateVal || !phase) return;
-
-    // 日付っぽい行のみ処理
-    if (!dateVal.match(/\d+\/\d+|\d{4}-\d{2}-\d{2}/)) return;
-
-    const getNum = (idx) => parseInt(row[idx]) || 0;
-
-    // フェーズに応じてPG集計
-    if (phase.includes('①') || phase.includes('FC')) {
-      totals.p1.rc += getNum(4); totals.p1.rt += getNum(5);
-      totals.p1.rx += getNum(6); totals.p1.kk += getNum(7);
-      totals.p2.rc += getNum(8); totals.p2.rt += getNum(9);
-      totals.p2.rx += getNum(10); totals.p2.kk += getNum(11);
-    } else if (phase.includes('②') || phase.includes('超早割')) {
-      totals.p1.rc += getNum(4); totals.p1.rt += getNum(5);
-      totals.p1.rx += getNum(6); totals.p1.kk += getNum(7);
-      totals.p2.rc += getNum(8); totals.p2.rt += getNum(9);
-      totals.p2.rx += getNum(10); totals.p2.kk += getNum(11);
-    } else if (phase.includes('③') || phase.includes('早割')) {
-      totals.p4.rc += getNum(4); totals.p4.rt += getNum(5);
-      totals.p4.rx += getNum(6); totals.p4.kk += getNum(7);
-      totals.p6.rc += getNum(8); totals.p6.rt += getNum(9);
-      totals.p6.rx += getNum(10); totals.p6.kk += getNum(11);
-    } else if (phase.includes('④') || phase.includes('一般')) {
-      totals.p7.rc += getNum(4); totals.p7.rt += getNum(5);
-      totals.p7.rx += getNum(6); totals.p7.kk += getNum(7);
-      totals.p8.rc += getNum(8); totals.p8.rt += getNum(9);
-      totals.p8.rx += getNum(10); totals.p8.kk += getNum(11);
-    }
-
-    // バス系は全期間合算
-    busTotals.his1 += getNum(12);
-    busTotals.hot1 += getNum(13);
-    busTotals.club1 += getNum(14);
-    busTotals.han1 += getNum(15);
-  });
-
-  // inputに反映
-  Object.entries(totals).forEach(([rowKey, cols]) => {
-    ['rc','rt','rx','kk'].forEach(col => {
-      const el = document.querySelector(`.pg-input[data-row="${rowKey}"][data-col="${col}"]`);
-      if (el) el.value = cols[col] || 0;
-    });
-  });
-  Object.entries(busTotals).forEach(([key, val]) => {
-    const el = document.querySelector(`.bus-input[data-key="${key}"]`);
-    if (el) el.value = val || 0;
-  });
-
-  calcSales();
-}
 
 // switchTabにsalesを追加
 const _origSwitch = switchTab;
