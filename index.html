@@ -2468,13 +2468,13 @@ function calcSales() {
   if (kpiRev) kpiRev.textContent = '¥' + Math.round(totalRev/10000) + '万';
 
   // グラフ更新
-  updateSalesCharts({ pgTotal, busTotal, jimuTotal, pgRevenue, busRevenue, pgRows: rowTotals, colTotals });
+  updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows: rowTotals, colTotals });
 }
 
 // ── グラフ ──
 let salesCharts = {};
 
-function updateSalesCharts({ pgTotal, busTotal, jimuTotal, pgRevenue, busRevenue, pgRows, colTotals }) {
+function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows, colTotals }) {
   const getPhaseTotal = (rows) => {
     let t = 0;
     rows.forEach(row => ['rc','rt','rx','kk'].forEach(col => {
@@ -3181,6 +3181,7 @@ function parseAllSheets(json) {
                     (pgTotals['楽天Exp']||0)*5500 + (pgTotals['KKDAY']||0)*5500;
   updateSalesCharts({
     pgTotal: totalPg, busTotal: totalBus, jimuTotal: 0,
+    grandTotal: totalPg + totalBus,
     pgRevenue, busRevenue: totalBus * 6000,
     pgRows: {}, colTotals: {
       rc: pgTotals['ローチケ']||0,
