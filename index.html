@@ -198,7 +198,7 @@ svg .area:hover{opacity:.8;}
     <div class="header-tag">GREAT SKY ART ／ CONFIDENTIAL</div>
     <div class="header-title">🎆 北海道芸術花火 2026 — 集客・販売戦略プラン</div>
     <div class="header-sub">
-      開催日：<strong>2026年9月5日（土）</strong> ｜ 会場：<strong>モエレ沼公園（札幌市東区）</strong> ｜ 目標：<strong>20,748枚</strong>
+      開催日：<strong>2026年9月5日（土）</strong> ｜ 会場：<strong>モエレ沼公園（札幌市東区）</strong> ｜ 目標：<strong>21,228枚</strong>
       <span class="now-badge">● LIVE</span>
     </div>
     <div class="tabs">
@@ -207,8 +207,7 @@ svg .area:hover{opacity:.8;}
       <button class="tab-btn" onclick="switchTab('target',this)">🎯 ターゲット戦略</button>
       <button class="tab-btn" onclick="switchTab('sim',this)">📈 集客シミュレーション</button>
       <button class="tab-btn" onclick="switchTab('kpi',this)">🏆 KPI目標</button>
-      <button class="tab-btn" onclick="switchTab('ticket',this)">🎫 配券表</button>
-      <button class="tab-btn" onclick="switchTab('sales',this)">📊 販売集計</button>
+            <button class="tab-btn" onclick="switchTab('sales',this)">📊 販売集計</button>
       <button class="tab-btn" onclick="switchTab('sns',this)">📱 SNS運用カレンダー</button>
     </div>
   </div>
@@ -227,8 +226,8 @@ svg .area:hover{opacity:.8;}
     </div>
     <div class="kpi-card">
       <div class="kpi-label">2026年目標（PG販売）</div>
-      <div class="kpi-value" style="color:var(--green)">20,748枚</div>
-      <div class="kpi-sub">損益分岐：17,000枚</div>
+      <div class="kpi-value" style="color:var(--green)">21,228枚</div>
+      <div class="kpi-sub">損益分岐：16,920枚</div>
       <div class="kpi-diff" style="color:var(--green)">▲ +65.5%</div>
     </div>
     <div class="kpi-card">
@@ -1047,7 +1046,7 @@ svg .area:hover{opacity:.8;}
           <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;">
             <div class="lbl">推定チケット販売枚数（OOH・バス・口コミ含む）</div>
             <div style="font-size:20px;font-weight:900;color:#FFD080;" id="simTotal">17,500</div>
-            <div style="font-size:10px;opacity:.5;margin-top:4px;">損益分岐：17,000枚　目標：20,748枚</div>
+            <div style="font-size:10px;opacity:.5;margin-top:4px;">損益分岐：16,920枚　目標：21,228枚</div>
           </div>
         </div>
         <div id="simAlert" style="margin-top:10px;"></div>
@@ -1121,7 +1120,7 @@ svg .area:hover{opacity:.8;}
   <div class="grid4">
     <div class="kpi-card">
       <div class="kpi-label">PGチケット販売目標</div>
-      <div class="kpi-value" style="color:var(--blue)">20,748枚</div>
+      <div class="kpi-value" style="color:var(--blue)">21,228枚</div>
       <div class="progress-track" style="margin-top:6px;">
         <div class="progress-fill" style="width:60%;background:var(--blue);"></div>
       </div>
@@ -1129,7 +1128,7 @@ svg .area:hover{opacity:.8;}
     </div>
     <div class="kpi-card">
       <div class="kpi-label">損益分岐点</div>
-      <div class="kpi-value" style="color:var(--gold)">17,000枚</div>
+      <div class="kpi-value" style="color:var(--gold)">16,920枚</div>
       <div class="kpi-sub">最低ライン</div>
     </div>
     <div class="kpi-card">
@@ -1208,7 +1207,7 @@ svg .area:hover{opacity:.8;}
         <td>④ 一般販売</td>
         <td>8/26（水）〜9/4（金）</td>
         <td>5,748枚</td>
-        <td>20,748枚</td>
+        <td>21,228枚</td>
         <td>残席訴求・直前広告</td>
       </tr>
       <tr>
@@ -1241,393 +1240,6 @@ svg .area:hover{opacity:.8;}
       <div class="alert alert-green" style="margin:0;">
         ✅ X フォロワー（5,176人）がIG（4,472人）を上回る珍しい構造。X ユーザーへのダイレクト訴求を強化し、チケット告知のリアルタイム拡散を狙う。
       </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ======================== TAB: 配券表 ======================== -->
-<div id="tab-ticket" class="tab-content">
-
-  <!-- フェーズ凡例 -->
-  <div class="card" style="padding:12px 20px;">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:11px;">
-      <span style="font-weight:800;color:var(--sub);">販売フェーズ：</span>
-      <span style="background:#1A5FA0;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">① メールFC早割 4/24〜4/30</span>
-      <span style="background:#0AACCC;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">② PG早割先行 5/1〜6/19</span>
-      <span style="background:#1A8C50;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">③ 早割先行 6/20〜8/25</span>
-      <span style="background:#C89010;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">④ 一般 8/26〜9/4</span>
-      <span style="background:#C83030;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">⑤ 当日券 9/5</span>
-      <span style="background:#0E1C2E;color:#fff;padding:2px 10px;border-radius:99px;font-weight:700;">⑥ 現地 9/5</span>
-    </div>
-  </div>
-
-  <!-- PG販売 ①メールFC先行 -->
-  <div class="card">
-    <div class="card-title">🎟️ PG販売 配券表（① メールFC早割 4/24〜4/30）</div>
-    <div style="overflow-x:auto;">
-    <table style="min-width:600px;">
-      <tr>
-        <th>カテゴリ</th><th>席種</th><th>単価</th>
-        <th style="text-align:center;background:rgba(26,95,160,.08);">ローチケ</th>
-        <th style="text-align:center;background:rgba(26,140,80,.08);">楽チケ</th>
-        <th style="text-align:center;background:rgba(200,144,16,.08);">楽天Exp</th>
-        <th style="text-align:center;background:rgba(104,64,160,.08);">KKDAY</th>
-        <th style="text-align:center;background:#F0F5FA;">合計</th>
-      </tr>
-      <!-- 特典付き芝席 -->
-      <tr style="background:rgba(26,95,160,.04);">
-        <td rowspan="7" style="font-weight:800;">先行入場<br>芝席</td>
-        <td>東芝席　たまねぎ</td><td>¥5,500</td>
-        <td style="text-align:center;">360</td><td style="text-align:center;">140</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">500</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">200</td><td style="text-align:center;">140</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">340</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>東芝席　とうきび</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">0</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>西芝席　赤</td><td>¥5,500</td>
-        <td style="text-align:center;">250</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">250</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>西芝席　青</td><td>¥5,500</td>
-        <td style="text-align:center;">250</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">250</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>西芝席　黄</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">250</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">250</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>西芝席　緑</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">250</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">250</td>
-      </tr>
-      <!-- 芝席（通常） -->
-      <tr>
-        <td rowspan="7" style="font-weight:800;">芝席</td>
-        <td>東芝席　たまねぎ</td><td>¥5,500</td>
-        <td style="text-align:center;">238</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">238</td>
-      </tr>
-      <tr>
-        <td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">260</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">260</td>
-      </tr>
-      <tr>
-        <td>東芝席　とうきび</td><td>¥5,500</td>
-        <td style="text-align:center;">2,000</td><td style="text-align:center;">2,000</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">4,000</td>
-      </tr>
-      <tr>
-        <td>西芝席　赤</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">0</td>
-      </tr>
-      <tr>
-        <td>西芝席　青</td><td>¥5,500</td>
-        <td style="text-align:center;">650</td><td style="text-align:center;">650</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">1,300</td>
-      </tr>
-      <tr>
-        <td>西芝席　黄</td><td>¥5,500</td>
-        <td style="text-align:center;">1,000</td><td style="text-align:center;">950</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">1,950</td>
-      </tr>
-      <tr>
-        <td>西芝席　緑</td><td>¥5,500</td>
-        <td style="text-align:center;">1,000</td><td style="text-align:center;">950</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">1,950</td>
-      </tr>
-      <!-- 特典付き椅子席 -->
-      <tr style="background:rgba(26,95,160,.04);">
-        <td rowspan="2" style="font-weight:800;">先行入場<br>プレミアム席 ✓</td>
-        <td>前方5列椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">311</td><td style="text-align:center;">224</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">535</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>通路前椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">90</td><td style="text-align:center;">100</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">190</td>
-      </tr>
-      <!-- 通常椅子席 -->
-      <tr>
-        <td style="font-weight:800;">プレミアム席</td>
-        <td>通常椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">1,453</td><td style="text-align:center;">700</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">2,153</td>
-      </tr>
-      <!-- カメラマン -->
-      <tr>
-        <td style="font-weight:800;">カメラマン席</td>
-        <td>カメラマン</td><td>¥18,000</td>
-        <td style="text-align:center;">15</td><td style="text-align:center;">15</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">30</td>
-      </tr>
-      <!-- 駐車券 -->
-      <tr style="background:#EDF3F8;">
-        <td rowspan="3" style="font-weight:800;">駐車券</td>
-        <td>さとらんど第1・2・3</td><td>¥5,000</td>
-        <td style="text-align:center;">280</td><td style="text-align:center;">142</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">422</td>
-      </tr>
-      <tr style="background:#EDF3F8;">
-        <td>さとらんど第6</td><td>¥4,000</td>
-        <td style="text-align:center;">150</td><td style="text-align:center;">80</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">230</td>
-      </tr>
-      <tr style="background:#EDF3F8;">
-        <td>小鍛冶組</td><td>¥4,000</td>
-        <td style="text-align:center;">200</td><td style="text-align:center;">100</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">300</td>
-      </tr>
-    </table>
-    </div>
-  </div>
-
-  <!-- PG販売 ② -->
-  <div class="card">
-    <div class="card-title">🎟️ PG販売 配券表（② PG早割先行 5/1〜6/19）</div>
-    <div style="overflow-x:auto;">
-    <table style="min-width:600px;">
-      <tr>
-        <th>カテゴリ</th><th>席種</th><th>単価</th>
-        <th style="text-align:center;background:rgba(26,95,160,.08);">ローチケ</th>
-        <th style="text-align:center;background:rgba(26,140,80,.08);">楽チケ</th>
-        <th style="text-align:center;background:rgba(200,144,16,.08);">楽天Exp</th>
-        <th style="text-align:center;background:rgba(104,64,160,.08);">KKDAY</th>
-        <th style="text-align:center;background:#F0F5FA;">合計</th>
-      </tr>
-      <tr style="background:rgba(10,172,204,.04);">
-        <td rowspan="2" style="font-weight:800;">先行入場<br>芝席（①残り）</td>
-        <td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">0</td>
-      </tr>
-      <tr style="background:rgba(10,172,204,.04);">
-        <td>その他エリア</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">0</td>
-      </tr>
-      <tr>
-        <td rowspan="2" style="font-weight:800;">芝席</td>
-        <td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">350</td><td style="text-align:center;">350</td>
-        <td style="text-align:center;font-weight:800;">700</td>
-      </tr>
-      <tr>
-        <td>東芝席　とうきび</td><td>¥5,500</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">650</td><td style="text-align:center;">650</td>
-        <td style="text-align:center;font-weight:800;">1,300</td>
-      </tr>
-      <tr style="background:rgba(10,172,204,.04);">
-        <td rowspan="2" style="font-weight:800;">先行入場<br>プレミアム席 ✓</td>
-        <td>前方5列椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">100</td><td style="text-align:center;">61</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">161</td>
-      </tr>
-      <tr style="background:rgba(10,172,204,.04);">
-        <td>通路前椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">70</td><td style="text-align:center;">120</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">190</td>
-      </tr>
-      <tr>
-        <td style="font-weight:800;">プレミアム席</td>
-        <td>通常椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">150</td>
-        <td style="text-align:center;font-weight:800;">150</td>
-      </tr>
-    </table>
-    </div>
-  </div>
-
-  <!-- PG販売 ③ -->
-  <div class="card">
-    <div class="card-title">🎟️ PG販売 配券表（③ 早割先行 6/20〜8/25）</div>
-    <div style="overflow-x:auto;">
-    <table style="min-width:600px;">
-      <tr>
-        <th>カテゴリ</th><th>席種</th><th>単価</th>
-        <th style="text-align:center;background:rgba(26,95,160,.08);">ローチケ</th>
-        <th style="text-align:center;background:rgba(26,140,80,.08);">楽チケ</th>
-        <th style="text-align:center;background:rgba(200,144,16,.08);">楽天Exp</th>
-        <th style="text-align:center;background:rgba(104,64,160,.08);">KKDAY</th>
-        <th style="text-align:center;background:#F0F5FA;">合計</th>
-      </tr>
-      <tr style="background:rgba(26,140,80,.04);">
-        <td style="font-weight:800;">芝自由エリア（上段）</td>
-        <td>お試し上段芝エリア</td><td>¥3,000</td>
-        <td style="text-align:center;">700</td><td style="text-align:center;">500</td><td style="text-align:center;">150</td><td style="text-align:center;">150</td>
-        <td style="text-align:center;font-weight:800;">1,500</td>
-      </tr>
-      <tr style="background:rgba(26,140,80,.04);">
-        <td style="font-weight:800;">プレミアム席</td>
-        <td>通常椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">150</td>
-        <td style="text-align:center;font-weight:800;">150</td>
-      </tr>
-      <tr style="background:rgba(26,140,80,.04);">
-        <td style="font-weight:800;">カメラマン席</td>
-        <td>カメラマン</td><td>¥18,000</td>
-        <td style="text-align:center;">0</td><td style="text-align:center;">0</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">0</td>
-      </tr>
-      <tr style="background:rgba(26,140,80,.04);">
-        <td style="font-weight:800;color:var(--dim);">④一般 調整中</td>
-        <td colspan="7" style="color:var(--dim);font-size:11px;">芝席・プレミアム席の④一般配券数は確定次第更新</td>
-      </tr>
-    </table>
-    </div>
-  </div>
-
-  <!-- ツアー系 -->
-  <div class="card">
-    <div class="card-title">🚌 ツアー系 配券表（2026年）</div>
-    <div style="overflow-x:auto;">
-    <table style="min-width:700px;">
-      <tr>
-        <th>区分</th><th>路線・券種</th><th>席種</th><th>単価</th>
-        <th style="text-align:center;">HISバスパック</th>
-        <th style="text-align:center;">阪急ツアー</th>
-        <th style="text-align:center;">阪急フリー</th>
-        <th style="text-align:center;">JTN外商</th>
-        <th style="text-align:center;">JTB</th>
-        <th style="text-align:center;">クラツー</th>
-        <th style="text-align:center;background:#F0F5FA;">合計</th>
-      </tr>
-      <!-- 特典バス -->
-      <tr style="background:rgba(26,95,160,.04);">
-        <td rowspan="4" style="font-weight:800;">特典付き<br>バス</td>
-        <td>特典東芝　栄町</td><td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">115</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">115</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>特典東芝　札幌駅北口</td><td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">45</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">45</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>特典付き椅子　栄町</td><td>前方5列椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">70</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">70</td>
-      </tr>
-      <tr style="background:rgba(26,95,160,.04);">
-        <td>特典付き椅子　札幌駅北口</td><td>前方5列椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">25</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">25</td>
-      </tr>
-      <!-- 通常バス -->
-      <tr>
-        <td rowspan="4" style="font-weight:800;">通常<br>バス</td>
-        <td>東芝席　栄町発着</td><td>東芝席　たまねぎ</td><td>¥5,500</td>
-        <td style="text-align:center;">300</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">300</td>
-      </tr>
-      <tr>
-        <td>東芝席　札幌駅北口発着</td><td>東芝席　たまねぎ</td><td>¥5,500</td>
-        <td style="text-align:center;">385</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">385</td>
-      </tr>
-      <tr>
-        <td>椅子席　栄町発着</td><td>椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">190</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">190</td>
-      </tr>
-      <tr>
-        <td>椅子席　札幌駅北口発着</td><td>椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">220</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">220</td>
-      </tr>
-      <!-- 各社ツアー -->
-      <tr style="background:rgba(200,144,16,.04);">
-        <td rowspan="8" style="font-weight:800;">各社<br>ツアー</td>
-        <td>芝席</td><td>東芝席　たまねぎ</td><td>¥5,500</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">47</td><td style="text-align:center;">30</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">77</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>芝席</td><td>東芝席　ミルク</td><td>¥5,500</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">40</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">40</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>芝席</td><td>東芝席　とうきび</td><td>¥5,500</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">200</td>
-        <td style="text-align:center;font-weight:800;">200</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>芝席</td><td>西芝席　赤</td><td>¥5,500</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">200</td>
-        <td style="text-align:center;font-weight:800;">200</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>椅子席</td><td>椅子席</td><td>¥9,000</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">40</td><td style="text-align:center;">—</td><td style="text-align:center;">150</td>
-        <td style="text-align:center;font-weight:800;">340</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>エキサイティングシート</td><td>エキサイティングシート</td><td>¥50,000</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">20</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">20</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>テーブル椅子席</td><td>テーブル椅子席</td><td>¥90,000</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">20</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">20</td>
-      </tr>
-      <tr style="background:rgba(200,144,16,.04);">
-        <td>🆕 最前椅子席（特別）</td><td>最前椅子席</td><td>—</td>
-        <td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td><td style="text-align:center;">40</td><td style="text-align:center;">—</td><td style="text-align:center;">—</td>
-        <td style="text-align:center;font-weight:800;">40</td>
-      </tr>
-    </table>
-    </div>
-  </div>
-
-  <!-- 事務局・協賛・招待 -->
-  <div class="grid2">
-    <div class="card">
-      <div class="card-title">🏢 事務局手売り・特別席</div>
-      <table>
-        <tr><th>区分</th><th>席種</th><th>単価</th><th style="text-align:center;">枚数</th></tr>
-        <tr><td rowspan="2" style="font-weight:800;">開催委員会<br>手売り</td><td>西芝席　青</td><td>¥5,500</td><td style="text-align:center;">600</td></tr>
-        <tr><td>椅子席 ✓</td><td>¥9,000</td><td style="text-align:center;">500</td></tr>
-        <tr><td style="font-weight:800;">テーブル椅子席</td><td>テーブル椅子席</td><td>¥90,000</td><td style="text-align:center;">48</td></tr>
-        <tr><td style="font-weight:800;">エキサイティングシート</td><td>エキサイティングシート（60×2名）</td><td>¥50,000</td><td style="text-align:center;">40</td></tr>
-        <tr><td style="font-weight:800;">車椅子</td><td>車椅子</td><td>¥10,000</td><td style="text-align:center;">30</td></tr>
-        <tr><td style="font-weight:800;">同伴者</td><td>同伴者</td><td>¥5,500</td><td style="text-align:center;">60</td></tr>
-        <tr><td rowspan="2" style="font-weight:800;">駐車場（事務局）</td><td>さとらんど第4</td><td>¥4,000</td><td style="text-align:center;">50</td></tr>
-        <tr><td>さとらんど第6</td><td>¥4,000</td><td style="text-align:center;">100</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <div class="card-title">🤝 協賛・招待・交通</div>
-      <table>
-        <tr><th>区分</th><th>席種</th><th style="text-align:center;">枚数</th></tr>
-        <tr><td rowspan="2" style="font-weight:800;">協賛（0円）</td><td>西芝席　青</td><td style="text-align:center;">50</td></tr>
-        <tr><td>椅子席</td><td style="text-align:center;">1,300</td></tr>
-        <tr><td rowspan="3" style="font-weight:800;">招待（0円）<br>VIP・主管枠</td><td>最前椅子席（BCD+A）</td><td style="text-align:center;">164</td></tr>
-        <tr><td>西芝席　赤</td><td style="text-align:center;">200</td></tr>
-        <tr><td>家族チケット（西芝席 赤）</td><td style="text-align:center;">300</td></tr>
-        <tr><td style="font-weight:800;">特別招待席</td><td>西芝席　赤</td><td style="text-align:center;">500</td></tr>
-        <tr><td style="font-weight:800;">北丘珠町内会館</td><td>西芝席　赤</td><td style="text-align:center;">750</td></tr>
-        <tr><td rowspan="2" style="font-weight:800;">招待 駐車場</td><td>南口駐車場</td><td style="text-align:center;">10</td></tr>
-        <tr><td>南臨時駐車場</td><td style="text-align:center;">90</td></tr>
-        <tr><td style="border-top:2px solid var(--border);font-weight:800;">HIS単券（交通のみ）</td><td>あいの里発着</td><td style="text-align:center;">555</td></tr>
-        <tr><td style="font-weight:800;">シェアタクシー</td><td>あいの里発着</td><td style="text-align:center;">240</td></tr>
-      </table>
     </div>
   </div>
 
@@ -1668,14 +1280,14 @@ svg .area:hover{opacity:.8;}
     <div class="kpi-card">
       <div class="kpi-label">PG販売 合計</div>
       <div class="kpi-value" style="color:var(--blue)" id="kpi-pg-total">0</div>
-      <div class="kpi-sub">目標：20,748枚</div>
+      <div class="kpi-sub">目標：21,228枚</div>
       <div class="progress-track" style="margin-top:6px;"><div class="progress-fill" id="kpi-pg-bar" style="width:0%;background:var(--blue);"></div></div>
       <div class="kpi-diff" id="kpi-pg-rate" style="color:var(--green)">0.0%</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">損益分岐 達成率</div>
       <div class="kpi-value" id="kpi-break-rate" style="color:var(--sub)">0.0%</div>
-      <div class="kpi-sub">分岐点：17,000枚</div>
+      <div class="kpi-sub">分岐点：16,920枚</div>
       <div class="progress-track" style="margin-top:6px;"><div class="progress-fill" id="kpi-break-bar" style="width:0%;background:var(--green);"></div></div>
     </div>
     <div class="kpi-card">
@@ -1845,6 +1457,17 @@ svg .area:hover{opacity:.8;}
         <td style="text-align:center;font-weight:800;" class="row-total" data-row="a9">0</td>
         <td style="text-align:center;color:var(--dim);font-size:10px;" class="haiken-cell" id="haiken-a9">—</td>
         <td style="text-align:center;font-size:10px;" class="row-rate" data-row="a9" data-cap="0">—</td>
+      </tr>
+      <tr style="background:rgba(26,95,160,.04);">
+        <td style="font-weight:800;font-size:10px;">カメラマン席</td>
+        <td style="font-size:11px;">カメラマン</td><td style="font-size:10px;">¥18,000</td>
+        <td style="text-align:center;"><input type="number" class="sales-input pg-input" data-row="a10" data-col="rc" data-price="18000" min="0" value="0"></td>
+        <td style="text-align:center;"><input type="number" class="sales-input pg-input" data-row="a10" data-col="rt" data-price="18000" min="0" value="0"></td>
+        <td style="text-align:center;background:#EEE;color:var(--dim);font-size:10px;">—</td>
+        <td style="text-align:center;background:#EEE;color:var(--dim);font-size:10px;">—</td>
+        <td style="text-align:center;font-weight:800;" class="row-total" data-row="a10">0</td>
+        <td style="text-align:center;color:var(--dim);font-size:10px;" class="haiken-cell" id="haiken-a10">—</td>
+        <td style="text-align:center;font-size:10px;" class="row-rate" data-row="a10" data-cap="0">—</td>
       </tr>
       <!-- ① 小計 -->
       <tr style="background:#D8E8F4;font-weight:800;">
@@ -2370,6 +1993,8 @@ svg .area:hover{opacity:.8;}
     </div>
   </div>
 
+</div><!-- tab-sns -->
+
 </div><!-- /main -->
 
 <script>
@@ -2549,12 +2174,12 @@ function updateSim() {
   document.getElementById('simTotal').textContent = total.toLocaleString();
 
   const alertEl = document.getElementById('simAlert');
-  if (total >= 20748) {
-    alertEl.innerHTML = '<div class="alert alert-green">🎆 目標 20,748枚 達成見込み！</div>';
-  } else if (total >= 17000) {
-    alertEl.innerHTML = '<div class="alert alert-gold">✅ 損益分岐点（17,000枚）は超える見込み。さらなる予算最適化で目標へ。</div>';
+  if (total >= 21228) {
+    alertEl.innerHTML = '<div class="alert alert-green">🎆 目標 21,228枚 達成見込み！</div>';
+  } else if (total >= 16920) {
+    alertEl.innerHTML = '<div class="alert alert-gold">✅ 損益分岐点（16,920枚）は超える見込み。さらなる予算最適化で目標へ。</div>';
   } else {
-    alertEl.innerHTML = '<div class="alert alert-red">⚠️ 損益分岐点（17,000枚）を下回る可能性あり。予算の見直しを検討。</div>';
+    alertEl.innerHTML = '<div class="alert alert-red">⚠️ 損益分岐点（16,920枚）を下回る可能性あり。予算の見直しを検討。</div>';
   }
 }
 
@@ -2769,7 +2394,7 @@ function calcSales() {
 
   // フェーズ別小計
   const phaseGroups = {
-    a: ['a1','a2','a3','a4','a5','a6','a7','a8','a9'],
+    a: ['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10'],
     b: ['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16','b17','b18'],
     c: ['c1','c2','c3','c4','c5','c6','c7','c8','c9'],
   };
@@ -2819,20 +2444,21 @@ function calcSales() {
   if (jimuRev) jimuRev.textContent = '¥' + Math.round(jimuRevenue/10000) + '万';
 
   // KPIサマリー
+  const grandTotal = pgTotal + busTotal; // ツアーまで含む、事務局除外
   const kpiPg = document.getElementById('kpi-pg-total');
-  if (kpiPg) kpiPg.textContent = pgTotal.toLocaleString() + '枚';
+  if (kpiPg) kpiPg.textContent = grandTotal.toLocaleString() + '枚';
   const pgBar = document.getElementById('kpi-pg-bar');
-  if (pgBar) pgBar.style.width = Math.min(100, Math.round(pgTotal/20748*100)) + '%';
+  if (pgBar) pgBar.style.width = Math.min(100, (grandTotal/21228*100).toFixed(1)) + '%';
   const pgRate = document.getElementById('kpi-pg-rate');
   if (pgRate) {
-    const r = Math.round(pgTotal/20748*100);
+    const r = (grandTotal/21228*100).toFixed(1);
     pgRate.textContent = r + '% 達成';
     pgRate.style.color = r >= 100 ? 'var(--green)' : r >= 80 ? 'var(--gold)' : 'var(--sub)';
   }
   const breakRate = document.getElementById('kpi-break-rate');
-  if (breakRate) breakRate.textContent = Math.round(pgTotal/17000*100) + '%';
+  if (breakRate) breakRate.textContent = (grandTotal/16920*100).toFixed(1) + '%';
   const breakBar = document.getElementById('kpi-break-bar');
-  if (breakBar) breakBar.style.width = Math.min(100, Math.round(pgTotal/17000*100)) + '%';
+  if (breakBar) breakBar.style.width = Math.min(100, (grandTotal/16920*100).toFixed(1)) + '%';
 
   const kpiBus = document.getElementById('kpi-bus-total');
   if (kpiBus) kpiBus.textContent = (busTotal + jimuTotal).toLocaleString() + '枚';
@@ -2867,8 +2493,8 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, pgRevenue, busRevenue
   };
 
   // ① ゲージ（ドーナツ）
-  const targetPct  = Math.min(100, Math.round(pgTotal / 20748 * 100));
-  const breakPct   = Math.min(100, Math.round(pgTotal / 17000 * 100));
+  const targetPct  = Math.min(100, parseFloat((grandTotal / 21228 * 100).toFixed(1)));
+  const breakPct   = Math.min(100, parseFloat((grandTotal / 16920 * 100).toFixed(1)));
   if (salesCharts.gauge) salesCharts.gauge.destroy();
   const gCtx = document.getElementById('gaugeChart')?.getContext('2d');
   if (gCtx) {
@@ -2890,11 +2516,11 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, pgRevenue, busRevenue
         ctx.save();
         ctx.textAlign='center';
         ctx.fillStyle='#1A5FA0'; ctx.font='bold 22px Arial';
-        ctx.fillText(targetPct+'%', cx, bottom-32);
+        ctx.fillText(targetPct.toFixed(1)+'%', cx, bottom-32);
         ctx.fillStyle='#4A6080'; ctx.font='11px Arial';
         ctx.fillText('目標達成率', cx, bottom-16);
         ctx.fillStyle='#1A8C50'; ctx.font='bold 13px Arial';
-        ctx.fillText('損益: '+breakPct+'%', cx, bottom-1);
+        ctx.fillText('損益: '+breakPct.toFixed(1)+'%', cx, bottom-1);
         ctx.restore();
       }}],
     });
@@ -2962,8 +2588,8 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, pgRevenue, busRevenue
         labels,
         datasets: [
           { label:'累計販売', data:actuals, borderColor:'#1A5FA0', backgroundColor:'rgba(26,95,160,.1)', fill:true, tension:0.4, pointRadius:4, pointBackgroundColor:'#1A5FA0' },
-          { label:'目標 20,748枚', data:labels.map(()=>20748), borderColor:'#C83030', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false },
-          { label:'損益分岐 17,000枚', data:labels.map(()=>17000), borderColor:'#C89010', borderDash:[4,4], borderWidth:1.5, pointRadius:0, fill:false },
+          { label:'目標 21,228枚', data:labels.map(()=>21228), borderColor:'#C83030', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false },
+          { label:'損益分岐 16,920枚', data:labels.map(()=>16920), borderColor:'#C89010', borderDash:[4,4], borderWidth:1.5, pointRadius:0, fill:false },
         ],
       },
       options: {
@@ -3241,51 +2867,79 @@ const SHEET_STRUCTURE = {
 };
 
 function parseAllSheets(json) {
-  // 配券数をスプレッドシートから読み取って反映
-  // 各シートの行6（index5）が配券数行
-  // ローチケの配券数マッピング（列インデックス→data-rowキー）
-  const haikenMap = {
-    // ローチケ先行入場芝席（列5〜11 = index4〜10）→ a1〜a7
-    'rc': {
-      4: 'a1', 5: 'a2', 6: 'a3', 7: 'a4', 8: 'a5', 9: 'a6', 10: 'a7',
-      // 先行入場プレミアム（列19〜20 = index18〜19）→ a8〜a9
-      18: 'a8', 19: 'a9',
-      // 通常芝席（列12〜18 = index11〜17）→ b8〜b14
-      11: 'b8', 12: 'b9', 13: 'b10', 14: 'b11', 15: 'b12', 16: 'b13', 17: 'b14',
-      // 通常プレミアム（列21 = index20）→ b17
-      20: 'b17',
-    }
+  // ── 配券数をスプレッドから読み取って、販売集計・配券表タブ両方を更新 ──
+  const rcRows = json['ローチケ'];
+  const rtRows2 = json['楽チケ'];
+  const rxRows2 = json['楽天Exp'];
+  const kkRows2 = json['KKDAY'];
+
+  // 配券表セルを更新するヘルパー
+  const setHk = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val > 0 ? val.toLocaleString() : '0';
+  };
+  const setHkSum = (id, ...vals) => {
+    const total = vals.reduce((s, v) => s + (v || 0), 0);
+    const el = document.getElementById(id);
+    if (el) el.textContent = total > 0 ? total.toLocaleString() : '0';
+  };
+  // 販売集計タブの消化率セルも更新
+  const setHaikenCell = (rowKey, val) => {
+    const hEl = document.getElementById(`haiken-${rowKey}`);
+    if (hEl) hEl.textContent = val > 0 ? val.toLocaleString() : '—';
+    const rEl = document.querySelector(`.row-rate[data-row="${rowKey}"]`);
+    if (rEl) rEl.dataset.cap = val;
   };
 
-  // ローチケの配券数を読み取り
-  const rcRows = json['ローチケ'];
-  if (rcRows && rcRows[5]) {
-    const haikenRow = rcRows[5];
-    Object.entries(haikenMap.rc).forEach(([colIdx, rowKey]) => {
-      const val = parseFloat(haikenRow[parseInt(colIdx)]) || 0;
-      if (val > 0) {
-        // haiken-cellを更新
-        const hEl = document.getElementById(`haiken-${rowKey}`);
-        if (hEl) hEl.textContent = val.toLocaleString();
-        // row-rateのdata-capも更新
-        const rEl = document.querySelector(`.row-rate[data-row="${rowKey}"]`);
-        if (rEl) rEl.dataset.cap = val;
-      }
+  if (rcRows && rcRows[5] && rtRows2 && rtRows2[5]) {
+    const rc6 = rcRows[5];
+    const rt6 = rtRows2[5];
+    const rx6 = (rxRows2 && rxRows2[5]) ? rxRows2[5] : [];
+    const kk6 = (kkRows2 && kkRows2[5]) ? kkRows2[5] : [];
+
+    const n = (row, ci) => parseFloat(row[ci]) || 0;
+
+    // ── 先行入場芝席（col4〜10）: ローチケ+楽チケ → a1〜a7, b1〜b7 ──
+    [4,5,6,7,8,9,10].forEach((ci, i) => {
+      const total = n(rc6,ci) + n(rt6,ci);
+      setHaikenCell(`a${i+1}`, total);
+      setHaikenCell(`b${i+1}`, total); // ②でも同じ先行入場芝席枠
     });
-    // ③の配券数は楽天Exp・KKDAYから読み取り
-    const rxRows = json['楽天Exp'];
-    if (rxRows && rxRows[5]) {
-      // 芝自由上段の合計配券数（全PG合算）
-      const rxHaiken = rxRows[5];
-      const totalJiyuHaiken = (parseFloat(rxHaiken[7]) || 0) + // 楽天Exp芝自由
-                              (parseFloat((json['KKDAY']?.[5])?.[8]) || 0); // KKDAY芝自由
-      if (totalJiyuHaiken > 0) {
-        const hEl = document.getElementById('haiken-c9');
-        if (hEl) hEl.textContent = totalJiyuHaiken.toLocaleString();
-        const rEl = document.querySelector('.row-rate[data-row="c9"]');
-        if (rEl) rEl.dataset.cap = totalJiyuHaiken;
-      }
-    }
+
+    // ── 通常芝席（rc:col11〜17, rt:col11〜17, rx:col4〜6, kk:col4〜6）──
+    // 席種別: たまねぎ/ミルク/とうきび/赤/青/黄/緑
+    const tsujoTotals = [
+      n(rc6,11)+n(rt6,11)+n(rx6,4)+n(kk6,4),   // たまねぎ → b8,c1
+      n(rc6,12)+n(rt6,12)+n(rx6,5)+n(kk6,5),   // ミルク   → b9,c2
+      n(rc6,13)+n(rt6,13)+n(rx6,6)+n(kk6,6),   // とうきび → b10,c3
+      n(rc6,14)+n(rt6,14),                       // 赤       → b11,c4
+      n(rc6,15)+n(rt6,15),                       // 青       → b12,c5
+      n(rc6,16)+n(rt6,16),                       // 黄       → b13,c6
+      n(rc6,17)+n(rt6,17),                       // 緑       → b14,c7
+    ];
+    tsujoTotals.forEach((total, i) => {
+      setHaikenCell(`b${i+8}`, total);
+      setHaikenCell(`c${i+1}`, total);
+    });
+
+    // ── 先行入場プレミアム（col18〜19）: ローチケ+楽チケ → a8〜a9, b15〜b16 ──
+    const prem1 = n(rc6,18)+n(rt6,18);
+    const prem2 = n(rc6,19)+n(rt6,19);
+    setHaikenCell('a8',  prem1); setHaikenCell('b15', prem1);
+    setHaikenCell('a9',  prem2); setHaikenCell('b16', prem2);
+
+    // ── 通常プレミアム（rc:col20, rt:col20, kk:col7）→ b17, c8 ──
+    const premTsujo = n(rc6,20)+n(rt6,20)+n(kk6,7);
+    setHaikenCell('b17', premTsujo);
+    setHaikenCell('c8',  premTsujo);
+
+    // ── カメラマン（col21）: ローチケ+楽チケ → a10, b18 ──
+    const cam = n(rc6,21)+n(rt6,21);
+    setHaikenCell('a10', cam);
+    setHaikenCell('b18', cam);
+
+    // ── 芝自由上段（rx:col7, kk:col8）→ c9 ──
+    setHaikenCell('c9', n(rx6,7)+n(kk6,8));
   }
   // 各PGシートの最新累計（最後のデータ行）を取得
   const pgTotals = {};
@@ -3386,42 +3040,52 @@ function parseAllSheets(json) {
     return null;
   };
 
-  // シートの行から特定日以前の最後のデータ行を取得（全行走査）
-  const getRowAtPhaseEnd = (rows, phaseEndDateStr) => {
-    let lastRow = null;
+  // 指定期間内の各列の最終値（累計）を取得
+  const getPhaseColValues = (rows, startDateStr, endDateStr) => {
+    const result = {};
     for (let i = 6; i < rows.length; i++) {
       const row = rows[i];
       const d = toDateStr(row[1]);
       if (!d) continue;
-      if (d <= phaseEndDateStr) lastRow = row; // breakしない
+      if (d < startDateStr) continue;
+      if (d > endDateStr) break;
+      // この期間内の行で、値がある列だけ更新（累計なので後勝ち）
+      for (let ci = 4; ci <= 35; ci++) {
+        const v = parseFloat(row[ci]);
+        if (!isNaN(v) && v > 0) {
+          result[ci] = v;
+        }
+      }
     }
-    return lastRow;
+    return result; // {列インデックス: 最終累計値}
+  };
+
+  // フェーズ開始日
+  const PHASE_STARTS = {
+    '①': '2026-04-24',
+    '②': '2026-05-01',
+    '③': '2026-06-20',
+    '④': '2026-08-26',
   };
 
   // デバッグ
   if (rcRows) {
     console.log('[DEBUG] rcRows 行数:', rcRows.length);
-    console.log('[DEBUG] index6 raw:', JSON.stringify(rcRows[6]).substring(0, 150));
-    console.log('[DEBUG] index6 B列:', rcRows[6]?.[1], '→toDateStr:', toDateStr(rcRows[6]?.[1]));
-    const p1 = getRowAtPhaseEnd(rcRows, PHASE_ENDS['①']);
-    const p2 = getRowAtPhaseEnd(rcRows, PHASE_ENDS['②']);
-    const p3 = getRowAtPhaseEnd(rcRows, PHASE_ENDS['③']);
-    console.log('[DEBUG] ①終了行 date:', p1?.[1], ' col4:', p1?.[4], ' col5:', p1?.[5]);
-    console.log('[DEBUG] ②終了行 date:', p2?.[1], ' col4:', p2?.[4], ' col11:', p2?.[11]);
-    console.log('[DEBUG] ③終了行 date:', p3?.[1], ' col4:', p3?.[4]);
-    console.log('[DEBUG] p1===p2?', p1 === p2, ' p2===p3?', p2 === p3);
+    const ph1vals = getPhaseColValues(rcRows, PHASE_STARTS['①'], PHASE_ENDS['①']);
+    const ph2vals = getPhaseColValues(rcRows, PHASE_STARTS['②'], PHASE_ENDS['②']);
+    console.log('[DEBUG] ①期間 col4:', ph1vals[4], ' col5:', ph1vals[5], ' col19:', ph1vals[19]);
+    console.log('[DEBUG] ②期間 col4:', ph2vals[4], ' col11:', ph2vals[11]);
   }
 
-  // 各フェーズ終了時点の行を取得して差分計算
+  // 各フェーズの列ごと最終値を返すヘルパー
   const getPhaseRows = (rows) => {
-    const p1End = getRowAtPhaseEnd(rows, PHASE_ENDS['①']);
-    const p2End = getRowAtPhaseEnd(rows, PHASE_ENDS['②']);
-    const p3End = getRowAtPhaseEnd(rows, PHASE_ENDS['③']);
-    const colVal = (row, ci) => row ? (parseFloat(row[ci]) || 0) : 0;
+    const v1 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['①']);
+    const v2 = getPhaseColValues(rows, PHASE_STARTS['②'], PHASE_ENDS['②']);
+    const v3 = getPhaseColValues(rows, PHASE_STARTS['③'], PHASE_ENDS['③']);
     return {
-      ph1: (ci) => colVal(p1End, ci),
-      ph2: (ci) => colVal(p2End, ci) - colVal(p1End, ci),
-      ph3: (ci) => colVal(p3End, ci) - colVal(p2End, ci),
+      ph1: (ci) => v1[ci] || 0,
+      ph2: (ci) => v2[ci] || 0,
+      ph3: (ci) => v3[ci] || 0,
     };
   };
 
@@ -3436,6 +3100,7 @@ function parseAllSheets(json) {
     // ①先行入場芝席(col4〜10)→a1〜a7, 先行入場プレミアム(col18〜19)→a8〜a9
     [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`a${i+1}`, 'rc', rc.ph1(ci)));
     [18,19].forEach((ci, i) => setVal(`a${i+8}`, 'rc', rc.ph1(ci)));
+    setVal('a10', 'rc', rc.ph1(21)); // ①カメラマン
     // ②先行入場芝席→b1〜b7, 通常芝席(col11〜17)→b8〜b14, 先行入場プレミアム→b15〜b16, 通常プレミアム(col20)→b17, カメラマン(col21)→b18
     [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+1}`, 'rc', rc.ph2(ci)));
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`b${i+8}`, 'rc', rc.ph2(ci)));
@@ -3448,11 +3113,11 @@ function parseAllSheets(json) {
   }
 
   // 楽チケ反映
-  const rtRows = json['楽チケ'];
-  if (rtRows) {
-    const rt = getPhaseRows(rtRows);
+  if (rtRows2) {
+    const rt = getPhaseRows(rtRows2);
     [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`a${i+1}`, 'rt', rt.ph1(ci)));
     [18,19].forEach((ci, i) => setVal(`a${i+8}`, 'rt', rt.ph1(ci)));
+    setVal('a10', 'rt', rt.ph1(21)); // ①カメラマン
     [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+1}`, 'rt', rt.ph2(ci)));
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`b${i+8}`, 'rt', rt.ph2(ci)));
     [18,19].forEach((ci, i) => setVal(`b${i+15}`, 'rt', rt.ph2(ci)));
@@ -3463,18 +3128,16 @@ function parseAllSheets(json) {
   }
 
   // 楽天Exp反映（通常芝col4〜6→②b8〜b10/③c1〜c3、芝自由col7→③c9）
-  const rxRows = json['楽天Exp'];
-  if (rxRows) {
-    const rx = getPhaseRows(rxRows);
+  if (rxRows2) {
+    const rx = getPhaseRows(rxRows2);
     [4,5,6].forEach((ci, i) => setVal(`b${i+8}`, 'rx', rx.ph2(ci)));
     [4,5,6].forEach((ci, i) => setVal(`c${i+1}`, 'rx', rx.ph3(ci)));
     setVal('c9', 'rx', rx.ph3(7));
   }
 
   // KKDAY反映（通常芝col4〜6、プレミアムcol7、芝自由col8）
-  const kkRows = json['KKDAY'];
-  if (kkRows) {
-    const kk = getPhaseRows(kkRows);
+  if (kkRows2) {
+    const kk = getPhaseRows(kkRows2);
     [4,5,6].forEach((ci, i) => setVal(`b${i+8}`, 'kk', kk.ph2(ci)));
     setVal('b17', 'kk', kk.ph2(7));
     [4,5,6].forEach((ci, i) => setVal(`c${i+1}`, 'kk', kk.ph3(ci)));
@@ -3486,7 +3149,7 @@ function parseAllSheets(json) {
   calcSales();
 
   const totalPg = (pgTotals['ローチケ']||0) + (pgTotals['楽チケ']||0) +
-                  (pgTotals['楽天Exp']||0) + (pgTotals['KKDAY']||0);
+                  (pgTotals['楽天Exp']||0) + (pgTotals['KKDAY']||0) + (pgTotals['ツアー']||0);
   const totalBus = pgTotals['ツアー'] || 0;
 
   // bus-inputキーに反映
@@ -3499,17 +3162,17 @@ function parseAllSheets(json) {
   const kpiPg = document.getElementById('kpi-pg-total');
   if (kpiPg) kpiPg.textContent = totalPg.toLocaleString() + '枚';
   const pgBar = document.getElementById('kpi-pg-bar');
-  if (pgBar) pgBar.style.width = Math.min(100, Math.round(totalPg/20748*100)) + '%';
+  if (pgBar) pgBar.style.width = Math.min(100, (totalPg/21228*100).toFixed(1)) + '%';
   const pgRate = document.getElementById('kpi-pg-rate');
   if (pgRate) {
-    const r = Math.round(totalPg/20748*100);
+    const r = (totalPg/21228*100).toFixed(1);
     pgRate.textContent = r + '% 達成';
     pgRate.style.color = r >= 100 ? 'var(--green)' : r >= 80 ? 'var(--gold)' : 'var(--sub)';
   }
   const breakRate = document.getElementById('kpi-break-rate');
-  if (breakRate) breakRate.textContent = Math.round(totalPg/17000*100) + '%';
+  if (breakRate) breakRate.textContent = (totalPg/16920*100).toFixed(1) + '%';
   const breakBar = document.getElementById('kpi-break-bar');
-  if (breakBar) breakBar.style.width = Math.min(100, Math.round(totalPg/17000*100)) + '%';
+  if (breakBar) breakBar.style.width = Math.min(100, (totalPg/16920*100).toFixed(1)) + '%';
   const kpiBus = document.getElementById('kpi-bus-total');
   if (kpiBus) kpiBus.textContent = totalBus.toLocaleString() + '枚';
 
