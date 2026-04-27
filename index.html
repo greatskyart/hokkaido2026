@@ -1328,10 +1328,10 @@ svg .area:hover{opacity:.8;}
         <div style="font-size:11px;font-weight:800;color:var(--sub);margin-bottom:6px;">HIS シャトルバス（席込み）</div>
         <table>
           <tr><th>券種</th><th>枚数</th><th>単価</th></tr>
-          <tr><td>特典東芝 栄町発着</td><td>350枚</td><td>¥5,500</td></tr>
-          <tr><td>特典東芝 札幌駅発着</td><td>300枚</td><td>¥5,500</td></tr>
-          <tr><td>特典付き椅子 栄町発着</td><td>250枚</td><td>¥9,000</td></tr>
-          <tr><td>特典付き椅子 札幌駅発着</td><td>130枚</td><td>¥9,000</td></tr>
+          <tr><td>先行入場芝席 栄町発着</td><td>350枚</td><td>¥5,500</td></tr>
+          <tr><td>先行入場芝席 札幌駅発着</td><td>300枚</td><td>¥5,500</td></tr>
+          <tr><td>先行入場プレミアム 栄町発着</td><td>250枚</td><td>¥9,000</td></tr>
+          <tr><td>先行入場プレミアム 札幌駅発着</td><td>130枚</td><td>¥9,000</td></tr>
           <tr><td colspan="3" style="color:var(--dim);font-size:10px;">※③早割：東芝・プレ各路線（枚数未定）</td></tr>
           <tr style="background:#EDF3F8;"><td><strong>HIS 確定小計</strong></td><td><strong>1,030枚</strong></td><td>—</td></tr>
         </table>
@@ -2094,19 +2094,19 @@ svg .area:hover{opacity:.8;}
       <table>
         <tr><th>区分</th><th>路線・席種</th><th style="text-align:center;">販売枚数</th><th style="text-align:center;">売上</th></tr>
         <tr><td rowspan="4" style="font-weight:800;">HIS<br>バスパック</td>
-          <td style="font-size:11px;">特典東芝 栄町（ミルク）</td>
+          <td style="font-size:11px;">先行入場芝席 栄町（ミルク）</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t1">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">特典東芝 札幌駅北口（ミルク）</td>
+        <tr><td style="font-size:11px;">先行入場芝席 札幌駅北口（ミルク）</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t2" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t2">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">特典椅子 栄町（前方5列）</td>
+        <tr><td style="font-size:11px;">先行入場プレミアム 栄町（前方5列）</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t3" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t3">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">特典椅子 札幌駅北口（前方5列）</td>
+        <tr><td style="font-size:11px;">先行入場プレミアム 札幌駅北口（前方5列）</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t4" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t4">¥0</td>
         </tr>
@@ -2791,23 +2791,49 @@ function calcSales() {
 
   // ── 売上詳細カード更新 ──
   const getRowVal2 = (row) => rowTotals[row]?.total || 0;
-  const getRowRev  = (row) => (rowTotals[row]?.total||0) * (rowTotals[row]?.price||0);
   const wan = (v) => '¥' + Math.round(v/10000) + '万';
 
-  // 席種別枚数・売上
-  const shibaS = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal2(r),0);
-  const shibaN = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal2(r),0);
-  const shibaJ = getRowVal2('c9');
-  const premS  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal2(r),0);
-  const premN  = ['b17','c8'].reduce((s,r)=>s+getRowVal2(r),0);
-  const cam    = ['a10','b18'].reduce((s,r)=>s+getRowVal2(r),0);
+  // バス系を席種別に分類（his_t1/t2→先行入場芝席、his_t3/t4→先行入場プレミアム）
+  let busShiba = 0, busPrem = 0, busShibaS = 0, busPremS = 0;
+  document.querySelectorAll('.bus-input').forEach(el => {
+    const v = parseInt(el.value)||0;
+    const key = el.dataset.key||'';
+    const price = parseInt(el.dataset.price)||0;
+    if (key === 'his_t1' || key === 'his_t2') {
+      busShibaS += v;
+    } else if (key === 'his_t3' || key === 'his_t4') {
+      busPremS += v;
+    } else if (price <= 5500) {
+      busShiba += v;
+    } else {
+      busPrem += v;
+    }
+  });
 
-  const revShibaS = shibaS * 5500;
-  const revShibaN = shibaN * 5500;
+  // 席種別枚数・売上（PG）
+  const shibaSPg = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaNPg = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaJ   = getRowVal2('c9');
+  const premSPg  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal2(r),0);
+  const premNPg  = ['b17','c8'].reduce((s,r)=>s+getRowVal2(r),0);
+  const cam      = ['a10','b18'].reduce((s,r)=>s+getRowVal2(r),0);
+
+  // バス系込みの合計
+  const shibaS  = shibaSPg + busShibaS;
+  const shibaN  = shibaNPg + busShiba;
+  const premS   = premSPg  + busPremS;
+  const premN   = premNPg  + busPrem;
+
+  const revShibaS = shibaSPg * 5500;
+  const revShibaN = shibaNPg * 5500;
   const revShibaJ = shibaJ * 3000;
-  const revPremS  = premS  * 9000;
-  const revPremN  = premN  * 9000;
-  const revCam    = cam    * 18000;
+  const revPremS  = premSPg  * 9000;
+  const revPremN  = premNPg  * 9000;
+  const revCam    = cam      * 18000;
+
+  // seatChartの集計もバス系込みに
+  const seatDataWithBus = [shibaS, shibaN, premS, premN, shibaJ, cam];
+  const seatTotalWithBus = seatDataWithBus.reduce((a,b)=>a+b,0);
 
   const pgGross = pgRevenue; // 全PG売上合計
   const pgFee   = pgGross * 0.06;
@@ -2817,11 +2843,11 @@ function calcSales() {
   const netTotal = pgNet + busNet + jimuRevenue;
 
   const setT = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
-  setT('rev-cnt-shiba-s', shibaS.toLocaleString()+'枚');
-  setT('rev-cnt-shiba-n', shibaN.toLocaleString()+'枚');
+  setT('rev-cnt-shiba-s', shibaS.toLocaleString()+'枚 (PG+'+ busShibaS +'バス)');
+  setT('rev-cnt-shiba-n', shibaN.toLocaleString()+'枚 (PG+'+ busShiba +'バス)');
   setT('rev-cnt-shiba-j', shibaJ.toLocaleString()+'枚');
-  setT('rev-cnt-prem-s',  premS.toLocaleString()+'枚');
-  setT('rev-cnt-prem-n',  premN.toLocaleString()+'枚');
+  setT('rev-cnt-prem-s',  premS.toLocaleString()+'枚 (PG+'+ busPremS +'バス)');
+  setT('rev-cnt-prem-n',  premN.toLocaleString()+'枚 (PG+'+ busPrem +'バス)');
   setT('rev-cnt-cam',     cam.toLocaleString()+'枚');
   setT('rev-cnt-pg',      pgTotal.toLocaleString()+'枚');
   setT('rev-cnt-bus',     busTotal.toLocaleString()+'枚');
@@ -2901,23 +2927,34 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
   if (salesCharts.pie) salesCharts.pie.destroy();
   const pCtx = document.getElementById('seatChart')?.getContext('2d');
 
-  // row-totalから席種別合計を集計
   const getRowVal = (row) => parseInt(document.querySelector(`.row-total[data-row="${row}"]`)?.textContent?.replace(/,/g,'')) || 0;
-  // 先行入場芝席（a1〜a7）
-  const shiba_senkou = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal(r),0);
-  // 通常芝席（b8〜b14, c1〜c7）
-  const shiba_tsujo  = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal(r),0);
-  // 先行入場プレミアム（a8〜a9, b15〜b16）
-  const prem_senkou  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal(r),0);
-  // 通常プレミアム（b17, c8）
-  const prem_tsujo   = ['b17','c8'].reduce((s,r)=>s+getRowVal(r),0);
-  // 芝自由上段（c9）
-  const shiba_jiyu   = getRowVal('c9');
-  // カメラマン（a10, b18）
-  const camera       = ['a10','b18'].reduce((s,r)=>s+getRowVal(r),0);
 
-  const seatLabels = ['先行入場芝席','通常芝席','先行入場プレミアム','通常プレミアム','芝自由上段','カメラマン'];
-  const seatData   = [shiba_senkou, shiba_tsujo, prem_senkou, prem_tsujo, shiba_jiyu, camera];
+  // バス系を席種別に集計（his_t1/t2→先行入場芝席、his_t3/t4→先行入場プレミアム）
+  let _busShiba = 0, _busPrem = 0, _busShibaS = 0, _busPremS = 0;
+  document.querySelectorAll('.bus-input').forEach(el => {
+    const v = parseInt(el.value)||0;
+    const key = el.dataset.key||'';
+    const price = parseInt(el.dataset.price)||0;
+    if (key === 'his_t1' || key === 'his_t2') {
+      _busShibaS += v; // 先行入場芝席（HISバスパック）
+    } else if (key === 'his_t3' || key === 'his_t4') {
+      _busPremS += v;  // 先行入場プレミアム（HISバスパック）
+    } else if (price <= 5500) {
+      _busShiba += v;  // 通常芝席（その他バス系）
+    } else {
+      _busPrem += v;   // 通常プレミアム（その他バス系）
+    }
+  });
+
+  const _shibaSPg = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal(r),0);
+  const _shibaNPg = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal(r),0);
+  const _shibaJ   = getRowVal('c9');
+  const _premSPg  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal(r),0);
+  const _premNPg  = ['b17','c8'].reduce((s,r)=>s+getRowVal(r),0);
+  const _cam      = ['a10','b18'].reduce((s,r)=>s+getRowVal(r),0);
+
+  const seatLabels = ['先行入場芝席（PG＋バス系）','通常芝席（PG＋バス系）','先行入場プレミアム（PG＋バス系）','通常プレミアム（PG＋バス系）','芝自由上段','カメラマン'];
+  const seatData   = [_shibaSPg+_busShibaS, _shibaNPg+_busShiba, _premSPg+_busPremS, _premNPg+_busPrem, _shibaJ, _cam];
   const seatColors = ['#1A5FA0','#2E8FD4','#1A8C50','#2EB870','#C89010','#8AACCB'];
   const seatTotal  = seatData.reduce((a,b)=>a+b,0);
 
@@ -2959,12 +2996,12 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
   // 数値サマリーバッジ
   const summaryEl = document.getElementById('seat-summary');
   if (summaryEl) {
-    const shibaTotal = shiba_senkou + shiba_tsujo + shiba_jiyu;
-    const premTotal  = prem_senkou + prem_tsujo;
+    const shibaTotal = _shibaSPg + _busShibaS + _shibaNPg + _busShiba + _shibaJ;
+    const premTotal  = _premSPg + _busPremS + _premNPg + _busPrem;
     const summaryItems = [
-      { label:'芝席 合計', val: shibaTotal, color:'#1A5FA0' },
-      { label:'プレミアム 合計', val: premTotal, color:'#1A8C50' },
-      { label:'カメラマン', val: camera, color:'#8AACCB' },
+      { label:'芝席 合計（PG＋バス系）', val: shibaTotal, color:'#1A5FA0' },
+      { label:'プレミアム 合計（PG＋バス系）', val: premTotal, color:'#1A8C50' },
+      { label:'カメラマン', val: _cam, color:'#8AACCB' },
       { label:'全体合計', val: seatTotal, color:'#0E1C2E' },
     ];
     summaryEl.innerHTML = summaryItems.map(item =>
