@@ -204,7 +204,7 @@ svg .area:hover{opacity:.8;}
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('schedule',this)">📅 月別スケジュール</button>
       <button class="tab-btn" onclick="switchTab('budget',this)">💰 予算配分</button>
-      <button class="tab-btn" onclick="switchTab('target',this)">🎯 ターゲット戦略</button>
+      <button class="tab-btn" onclick="switchTab('target',this)">🎯 ターゲット戦略（2025実績）</button>
       <button class="tab-btn" onclick="switchTab('sim',this)">📈 集客シミュレーション</button>
       <button class="tab-btn" onclick="switchTab('kpi',this)">🏆 KPI目標</button>
             <button class="tab-btn" onclick="switchTab('sales',this)">📊 販売集計</button>
@@ -454,7 +454,7 @@ svg .area:hover{opacity:.8;}
       </div>
       <div class="month-meta">
         <div class="month-phase">⚡ ② PG早割先行スタート ＋ WEB広告開始</div>
-        <div class="month-kpi">5/1〜6/19 オフィシャルPG早割先行 ｜ FB/IG・YDA広告出稿開始</div>
+        <div class="month-kpi">5/1〜6/19 オフィシャルPG早割先行 ｜ FB/IG・YDA・YouTube広告出稿開始</div>
       </div>
       <div class="month-budget-tag" style="background:rgba(26,95,160,.1);">
         <div class="bl">WEB広告</div>
@@ -476,7 +476,7 @@ svg .area:hover{opacity:.8;}
         <div class="task-check"></div>
         <div class="task-meta">
           <div class="task-cats"><span class="cat-tag" style="background:rgba(26,95,160,.1);color:var(--blue);">Web広告</span><span class="urgent-tag">最優先</span></div>
-          <div class="task-text">FB/IG・YDA広告 出稿開始（5月予算¥35万：FB/IG 22万 ＋ YDA 7万 ＋ 予備6万）</div>
+          <div class="task-text">FB/IG・YDA・YouTube広告 出稿開始（5月予算¥42万：FB/IG 22万 ＋ YDA 10万 ＋ YouTube 10万）</div>
           <div class="task-insight" style="background:rgba(26,95,160,.06);color:var(--blue);">💡 ②PG早割先行（5/1〜6/19）に合わせて広告開始。早期認知獲得で7月の高効率期（CPA ¥72想定）への転換を最大化。</div>
         </div>
       </div>
@@ -505,7 +505,7 @@ svg .area:hover{opacity:.8;}
         <div class="m">6月</div><div class="s">JUN</div>
       </div>
       <div class="month-meta">
-        <div class="month-phase">🟢 ② 終了 → ③ 早割先行スタート ＋ YouTube追加</div>
+        <div class="month-phase">🟢 ② 終了 → ③ 早割先行スタート（YouTube 7月から再開）</div>
         <div class="month-kpi">6/19まで②継続 ｜ 6/20〜8/25 ③早割先行 ｜ 全媒体強化</div>
       </div>
       <div class="month-budget-tag" style="background:rgba(200,144,16,.08);">
@@ -528,7 +528,7 @@ svg .area:hover{opacity:.8;}
         <div class="task-check"></div>
         <div class="task-meta">
           <div class="task-cats"><span class="cat-tag" style="background:rgba(26,95,160,.1);color:var(--blue);">Web広告</span><span class="urgent-tag">重要</span></div>
-          <div class="task-text">YouTube広告 追加出稿・FB/IG・YDA 増額（6月予算¥63万：FB/IG 38万 ＋ YDA 13万 ＋ YT 12万）</div>
+          <div class="task-text">FB/IG・YDA継続（6月予算¥51万：FB/IG 38万 ＋ YDA 13万 ／ YouTube一旦停止）</div>
           <div class="task-insight" style="background:rgba(26,95,160,.06);color:var(--blue);">💡 5月超早割認知層への追撃＋新規リーチ拡大。早割開始（6/1）に合わせて予算を一段階引き上げる。</div>
         </div>
       </div>
@@ -858,14 +858,32 @@ svg .area:hover{opacity:.8;}
 <div id="tab-target" class="tab-content">
 
   <!-- 購入者属性 -->
-  <div class="grid2">
+  <div class="grid3">
     <div class="card">
-      <div class="card-title">👥 2025年 購入者年代構成（ローチケ＋楽天 約10,649枚）</div>
-      <canvas id="ageChart" height="150"></canvas>
+      <div class="card-title">👥 2025実績 購入者年代構成（ローチケ＋楽天 約10,649枚）</div>
+      <canvas id="ageChart" height="160"></canvas>
     </div>
     <div class="card">
-      <div class="card-title">🗺️ 2025年 購入者地域構成</div>
-      <canvas id="regionChart" height="150"></canvas>
+      <div class="card-title">⚤ 2025実績 購入者男女比</div>
+      <canvas id="genderChart" height="160"></canvas>
+      <div style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="width:12px;height:12px;border-radius:50%;background:#1A5FA0;display:inline-block;"></span>
+          <span>男性 <strong>41.4%</strong></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="width:12px;height:12px;border-radius:50%;background:#E87FA0;display:inline-block;"></span>
+          <span>女性 <strong>51.6%</strong></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="width:12px;height:12px;border-radius:50%;background:#CCCCCC;display:inline-block;"></span>
+          <span>不明 <strong>7.0%</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗺️ 2025実績 購入者地域構成</div>
+      <canvas id="regionChart" height="160"></canvas>
     </div>
   </div>
 
@@ -943,37 +961,58 @@ svg .area:hover{opacity:.8;}
       💡 競合大会の前後は「花火」への関心が高まりユーザーが能動的に情報収集する。この機会に広告を強化することで<strong>比較検討層へのリーチ</strong>が低コストで実現できる。
     </div>
     <table>
-      <tr><th>日程（2025年実績）</th><th>大会名</th><th>会場</th><th>規模</th><th>広告連動施策</th></tr>
+      <tr><th>日程（2026年）</th><th>大会名</th><th>会場</th><th>規模</th><th>広告連動施策</th></tr>
       <tr>
-        <td><span class="badge badge-green">6月下旬</span><br><small>2025年：6/29(日)</small></td>
+        <td><span class="badge badge-green">6月下旬</span><br><small>2026年：6/20(土)予定</small></td>
         <td><strong>たきの花火</strong></td>
         <td>滝野すずらん丘陵公園<br>（札幌市南区）</td>
         <td>約3,000発<br>有料チケット制</td>
         <td>翌日〜翌週に「次の花火は？」訴求のリターゲティング広告を集中投下</td>
       </tr>
       <tr>
-        <td><span class="badge badge-gold">7月中旬</span><br><small>2025年：7/12(土)</small></td>
+        <td><span class="badge badge-gold">7月11日</span><br><small>2026年：<strong>7/11(土)確定</strong></small></td>
+        <td><strong>ファイターズ花火大会①</strong><br><small>エスコンフィールド</small></td>
+        <td>エスコンフィールドHOKKAIDO<br>（北広島市）</td>
+        <td>約6,000発超<br>試合観戦チケット必要</td>
+        <td>エスコン来場者へのリターゲティング。「次は芸術花火へ」訴求を翌週に集中配信</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-gold">7月11日</span><br><small>2026年：<strong>7/11(土)確定</strong></small></td>
         <td><strong>真駒内花火大会</strong></td>
         <td>真駒内セキスイハイムスタジアム<br>（札幌市南区）</td>
         <td>約22,000発<br>有料チケット制</td>
         <td>道内最大級の競合。開催前後に「芸術花火との違い」訴求。7月広告ピーク期と重なるため予算維持</td>
       </tr>
       <tr>
-        <td><span class="badge badge-gold">7月下旬</span><br><small>2025年：7/25(金)</small></td>
+        <td><span class="badge badge-gold">7月下旬</span><br><small>2026年：7/24(金)前後予定</small></td>
         <td><strong>道新・UHB花火大会</strong><br>（豊平川）</td>
         <td>豊平川南大橋〜幌平橋間<br>（札幌市中央区）</td>
         <td>約4,000発<br>無料観覧</td>
         <td>無料大会のため来場ハードル低い。翌日に「次はモエレ沼で！」訴求のリターゲティングが有効</td>
       </tr>
       <tr>
-        <td><span class="badge badge-cyan">8月中旬</span><br><small>2025年：8/13(水)</small></td>
+        <td><span class="badge badge-cyan">8月1日</span><br><small>2026年：8/1(土)確定</small></td>
+        <td><strong>えべつ花火大会</strong><br><small>第10回</small></td>
+        <td>江別市内<br>（江別市）</td>
+        <td>約10,000発<br>日本の花火師による競技大会</td>
+        <td>札幌近郊・同エリア来場者へのリターゲ。「本格芸術花火はモエレ沼で」の訴求チャンス</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-cyan">8月上旬</span><br><small>2026年：8/8(土)</small></td>
+        <td><strong>ファイターズ超花火大会</strong><br><small>エスコンフィールド</small></td>
+        <td>エスコンフィールドHOKKAIDO<br>（北広島市）</td>
+        <td>約6,000発超<br>試合観戦チケット必要</td>
+        <td>花火関心層が急増するタイミング。8月広告（62万）を前倒し強化してリーチ拡大</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-cyan">8月中旬</span><br><small>2025年実績：8/13(水)</small></td>
         <td><strong>勝毎花火大会</strong></td>
         <td>十勝川河川敷<br>（帯広市）</td>
         <td>道内屈指の規模<br>有料チケット制</td>
         <td>道東エリアの購買層へのリーチ機会。帯広・十勝エリアターゲティングを8月上旬に強化</td>
       </tr>
       <tr style="background:#EDF3F8;">
-        <td><span class="badge badge-blue">9月上旬</span><br><small>2026年：<strong>9/5(土)</strong></small></td>
+        <td><span class="badge badge-blue">9月5日</span><br><small>2026年：<strong>9/5(土)</strong></small></td>
         <td><strong>🎆 北海道芸術花火 2026</strong></td>
         <td>モエレ沼公園<br>（札幌市東区）</td>
         <td>国内最高峰<br>有料チケット制</td>
@@ -981,10 +1020,216 @@ svg .area:hover{opacity:.8;}
       </tr>
     </table>
     <div class="alert alert-gold" style="margin-top:12px;">
-      ⚡ <strong>7月は「真駒内（7月中旬）→ 道新UHB（7月下旬）」と大型大会が連続。</strong>この時期に合わせてWEB広告予算を最大化（¥100万）することで、花火関心層が高まった市場を効率よく取り込める。
+      ⚡ <strong>7月〜8月は大型大会が連続。</strong>エスコン花火①・真駒内（7/11 同日）→ 道新UHB（7月下旬）→ えべつ（8/1）→ エスコン超花火大会（8/8）と続く。この「花火ムード最高潮期」に合わせてWEB広告予算を最大化（7月¥100万・8月¥62万）し、競合大会来場者へのリターゲティングを集中投下する。
     </div>
   </div>
 
+  <!-- WEB広告ターゲティング精査 -->
+  <div class="card">
+    <div class="card-title">🎯 WEB広告 ターゲティング精査（2025年実績データ分析）</div>
+    <div class="alert alert-blue" style="margin-bottom:12px;">
+      📊 <strong>2025年 7/10〜7/31 実績（3媒体合計¥40万）</strong>をもとに、2026年のターゲット絞り込み方針を決定。
+    </div>
+
+    <!-- 媒体別パフォーマンス -->
+    <div style="font-weight:800;font-size:12px;margin-bottom:8px;color:var(--sub);">▌ 2025年 媒体別実績（3週間）</div>
+    <table style="margin-bottom:16px;">
+      <tr><th>媒体</th><th style="text-align:center;">費用</th><th style="text-align:center;">CV数</th><th style="text-align:center;">CV単価</th><th style="text-align:center;">評価</th></tr>
+      <tr>
+        <td><strong>FB / Instagram</strong></td>
+        <td style="text-align:center;">¥20万</td>
+        <td style="text-align:center;font-weight:800;color:var(--blue);">3,952件</td>
+        <td style="text-align:center;font-weight:800;color:var(--green);">¥51</td>
+        <td style="text-align:center;"><span class="badge badge-green">◎ 最高効率</span></td>
+      </tr>
+      <tr>
+        <td><strong>YDA（Yahoo!）</strong></td>
+        <td style="text-align:center;">¥10万</td>
+        <td style="text-align:center;font-weight:800;">793件</td>
+        <td style="text-align:center;">¥126</td>
+        <td style="text-align:center;"><span class="badge badge-gold">△ 絞込で改善余地</span></td>
+      </tr>
+      <tr>
+        <td><strong>YouTube</strong></td>
+        <td style="text-align:center;">¥10万</td>
+        <td style="text-align:center;font-weight:800;">797件</td>
+        <td style="text-align:center;">¥125</td>
+        <td style="text-align:center;"><span class="badge badge-gold">△ 絞込で改善余地</span></td>
+      </tr>
+    </table>
+
+    <!-- ターゲティング精査結果 -->
+    <div style="font-weight:800;font-size:12px;margin-bottom:8px;color:var(--sub);">▌ 2026年 ターゲティング絞り込み方針（YDA・YouTube）</div>
+    <div class="grid2" style="gap:12px;margin-bottom:16px;">
+      <!-- YDA -->
+      <div style="background:#FFF8E8;border:1px solid #E8C840;border-radius:8px;padding:12px;">
+        <div style="font-weight:800;color:var(--gold);margin-bottom:8px;">📊 YDA（Yahoo!ディスプレイ）</div>
+        <table style="font-size:11px;">
+          <tr><th>セグメント</th><th style="text-align:center;">CV数</th><th style="text-align:center;">CV単価</th><th style="text-align:center;">2026年方針</th></tr>
+          <tr>
+            <td>北海道</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">543件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥71</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅ 集中投下</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>東京都</td>
+            <td style="text-align:center;">114件</td>
+            <td style="text-align:center;color:var(--red);">¥236</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>その他道外</td>
+            <td style="text-align:center;">136件</td>
+            <td style="text-align:center;color:var(--red);">¥245〜</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+          <tr style="border-top:2px solid #E8C840;">
+            <td colspan="3" style="font-weight:800;">年齢：30〜59歳に絞る</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>30〜39歳</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">189件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥95</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr>
+            <td>40〜49歳</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">358件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥104</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr>
+            <td>50〜59歳</td>
+            <td style="text-align:center;">170件</td>
+            <td style="text-align:center;">¥156</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>〜29歳 / 60歳〜</td>
+            <td style="text-align:center;">67件</td>
+            <td style="text-align:center;color:var(--red);">¥343〜</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+        </table>
+        <div style="margin-top:8px;padding:6px 8px;background:#FFF3CC;border-radius:4px;font-size:10px;">
+          絞り込み後CV単価：¥126 → <strong style="color:var(--green);">¥85前後</strong>に改善見込み
+        </div>
+      </div>
+
+      <!-- YouTube -->
+      <div style="background:#F0F8FF;border:1px solid #1A5FA0;border-radius:8px;padding:12px;">
+        <div style="font-weight:800;color:var(--blue);margin-bottom:8px;">🎬 YouTube</div>
+        <table style="font-size:11px;">
+          <tr><th>セグメント</th><th style="text-align:center;">CV数</th><th style="text-align:center;">CV単価</th><th style="text-align:center;">2026年方針</th></tr>
+          <tr>
+            <td>北海道</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">754件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥90</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅ 集中投下</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>東京都</td>
+            <td style="text-align:center;">5件</td>
+            <td style="text-align:center;color:var(--red);">¥1,551</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>その他道外</td>
+            <td style="text-align:center;">38件</td>
+            <td style="text-align:center;color:var(--red);">¥480〜</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+          <tr style="border-top:2px solid #1A5FA0;">
+            <td colspan="3" style="font-weight:800;">年齢：25〜64歳に絞る</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>25〜34歳</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">80件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥82</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr>
+            <td>35〜44歳</td>
+            <td style="text-align:center;">182件</td>
+            <td style="text-align:center;">¥129</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr>
+            <td>45〜54歳</td>
+            <td style="text-align:center;">283件</td>
+            <td style="text-align:center;">¥127</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr>
+            <td>55〜64歳</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">241件</td>
+            <td style="text-align:center;font-weight:800;color:var(--green);">¥105</td>
+            <td style="text-align:center;"><span style="color:var(--green);font-weight:700;">✅</span></td>
+          </tr>
+          <tr style="background:#FFF0F0;">
+            <td>18〜24歳 / 65歳〜</td>
+            <td style="text-align:center;">8件</td>
+            <td style="text-align:center;color:var(--red);">¥160〜</td>
+            <td style="text-align:center;"><span style="color:var(--red);font-weight:700;">❌ 除外</span></td>
+          </tr>
+        </table>
+        <div style="margin-top:8px;padding:6px 8px;background:#E8F0FA;border-radius:4px;font-size:10px;">
+          絞り込み後CV単価：¥125 → <strong style="color:var(--green);">¥95前後</strong>に改善見込み
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026年 5-6月予算配分 -->
+    <div style="font-weight:800;font-size:12px;margin-bottom:8px;color:var(--sub);">▌ 2026年 5〜6月 予算配分（合計¥100万）</div>
+    <table style="margin-bottom:12px;">
+      <tr><th>媒体</th><th>地域</th><th>年齢</th><th style="text-align:center;">5月</th><th style="text-align:center;">6月</th><th style="text-align:center;">合計</th><th style="text-align:center;">25年CV単価</th><th style="text-align:center;">26年予測CV単価</th></tr>
+      <tr>
+        <td><strong>FB / Instagram</strong></td>
+        <td>北海道中心</td>
+        <td>20〜50代</td>
+        <td style="text-align:center;">27万</td>
+        <td style="text-align:center;">33万</td>
+        <td style="text-align:center;font-weight:800;color:var(--blue);">60万</td>
+        <td style="text-align:center;">¥51</td>
+        <td style="text-align:center;font-weight:800;color:var(--green);">¥51（維持）</td>
+      </tr>
+      <tr>
+        <td><strong>YDA</strong></td>
+        <td style="color:var(--green);font-weight:700;">北海道のみ</td>
+        <td style="color:var(--green);font-weight:700;">30〜59歳</td>
+        <td style="text-align:center;">8万</td>
+        <td style="text-align:center;">12万</td>
+        <td style="text-align:center;font-weight:800;color:var(--blue);">20万</td>
+        <td style="text-align:center;">¥126</td>
+        <td style="text-align:center;font-weight:800;color:var(--green);">¥85前後</td>
+      </tr>
+      <tr>
+        <td><strong>YouTube</strong></td>
+        <td style="color:var(--green);font-weight:700;">北海道のみ</td>
+        <td style="color:var(--green);font-weight:700;">25〜64歳</td>
+        <td style="text-align:center;">8万</td>
+        <td style="text-align:center;">12万</td>
+        <td style="text-align:center;font-weight:800;color:var(--blue);">20万</td>
+        <td style="text-align:center;">¥125</td>
+        <td style="text-align:center;font-weight:800;color:var(--green);">¥95前後</td>
+      </tr>
+      <tr style="background:#EDF3F8;font-weight:800;">
+        <td>合計</td>
+        <td colspan="2"></td>
+        <td style="text-align:center;">43万</td>
+        <td style="text-align:center;">57万</td>
+        <td style="text-align:center;color:var(--blue);">100万</td>
+        <td style="text-align:center;">¥72</td>
+        <td style="text-align:center;color:var(--green);">¥62前後</td>
+      </tr>
+    </table>
+    <div class="alert alert-gold">
+      ⚠️ <strong>注意：5〜6月は昨年実績データなし。</strong>CV数の試算は昨年7月のCV単価ベース。5〜6月は認知フェーズのためCV率は変動する可能性あり。<strong>週次でCPC・CTRを確認しながら調整</strong>することを推奨。主要KPIは「CV単価」ではなく「CPC・CTR」を重視する。
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-title">🪑 2025年 席種別販売実績（最終）</div>
@@ -1296,9 +1541,9 @@ svg .area:hover{opacity:.8;}
       <div class="kpi-sub">目安：1,600枚〜</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">推定売上（概算）</div>
+      <div class="kpi-label">推定純売上（手数料控除後）</div>
       <div class="kpi-value" style="color:var(--purple)" id="kpi-revenue">¥0万</div>
-      <div class="kpi-sub">PG＋バス系合算</div>
+      <div class="kpi-sub" id="kpi-revenue-sub">PG6%手数料控除済・バス系合算</div>
     </div>
   </div>
 
@@ -1317,12 +1562,13 @@ svg .area:hover{opacity:.8;}
       </div>
     </div>
 
-    <!-- 円グラフ：PG別・バス系構成比 -->
+    <!-- 席種別内訳グラフ -->
     <div class="card">
-      <div class="card-title">🥧 PG・チャネル別 構成比</div>
+      <div class="card-title">🪑 席種別 販売内訳</div>
       <div style="position:relative;height:200px;">
-        <canvas id="pieChart"></canvas>
+        <canvas id="seatChart"></canvas>
       </div>
+      <div id="seat-summary" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;"></div>
     </div>
 
   </div>
@@ -1347,6 +1593,49 @@ svg .area:hover{opacity:.8;}
 
   </div>
 
+  <!-- 売上詳細カード -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-title">💴 売上詳細（席種別内訳・手数料控除）</div>
+    <div class="grid2" style="gap:12px;">
+      <!-- 左：席種別売上内訳テーブル -->
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--sub);margin-bottom:6px;">▌ 席種別 売上内訳</div>
+        <table style="font-size:11px;">
+          <tr><th>席種</th><th style="text-align:right;">枚数</th><th style="text-align:right;">単価</th><th style="text-align:right;">売上（概算）</th></tr>
+          <tr><td>先行入場芝席</td><td style="text-align:right;" id="rev-cnt-shiba-s">0枚</td><td style="text-align:right;color:var(--dim);">¥5,500</td><td style="text-align:right;font-weight:800;" id="rev-shiba-s">¥0万</td></tr>
+          <tr><td>通常芝席</td><td style="text-align:right;" id="rev-cnt-shiba-n">0枚</td><td style="text-align:right;color:var(--dim);">¥5,500</td><td style="text-align:right;font-weight:800;" id="rev-shiba-n">¥0万</td></tr>
+          <tr><td>芝自由上段</td><td style="text-align:right;" id="rev-cnt-shiba-j">0枚</td><td style="text-align:right;color:var(--dim);">¥3,000</td><td style="text-align:right;font-weight:800;" id="rev-shiba-j">¥0万</td></tr>
+          <tr><td>先行入場プレミアム</td><td style="text-align:right;" id="rev-cnt-prem-s">0枚</td><td style="text-align:right;color:var(--dim);">¥9,000</td><td style="text-align:right;font-weight:800;" id="rev-prem-s">¥0万</td></tr>
+          <tr><td>通常プレミアム</td><td style="text-align:right;" id="rev-cnt-prem-n">0枚</td><td style="text-align:right;color:var(--dim);">¥9,000</td><td style="text-align:right;font-weight:800;" id="rev-prem-n">¥0万</td></tr>
+          <tr><td>カメラマン</td><td style="text-align:right;" id="rev-cnt-cam">0枚</td><td style="text-align:right;color:var(--dim);">¥18,000</td><td style="text-align:right;font-weight:800;" id="rev-cam">¥0万</td></tr>
+          <tr style="border-top:2px solid var(--border);font-weight:800;">
+            <td>PG 小計</td><td style="text-align:right;" id="rev-cnt-pg">0枚</td><td></td><td style="text-align:right;color:var(--blue);" id="rev-pg-gross">¥0万</td>
+          </tr>
+          <tr><td>バス系</td><td style="text-align:right;" id="rev-cnt-bus">0枚</td><td style="text-align:right;color:var(--dim);">—</td><td style="text-align:right;font-weight:800;" id="rev-bus">¥0万</td></tr>
+        </table>
+      </div>
+      <!-- 右：手数料・純売上サマリー -->
+      <div style="display:flex;flex-direction:column;gap:8px;justify-content:center;">
+        <div style="background:#F0F5FA;border-radius:8px;padding:12px;">
+          <div style="font-size:10px;color:var(--sub);margin-bottom:2px;">PG 売上（概算）</div>
+          <div style="font-size:18px;font-weight:800;color:var(--blue);" id="rev-summary-pg-gross">¥0万</div>
+        </div>
+        <div style="background:#FFF3EE;border-radius:8px;padding:12px;">
+          <div style="font-size:10px;color:var(--sub);margin-bottom:2px;">販売手数料（PG＋バス系 6%控除）</div>
+          <div style="font-size:18px;font-weight:800;color:var(--red);" id="rev-summary-fee">−¥0万</div>
+        </div>
+        <div style="background:#F0F5FA;border-radius:8px;padding:12px;">
+          <div style="font-size:10px;color:var(--sub);margin-bottom:2px;">バス系 売上（控除前）</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold);" id="rev-summary-bus">¥0万</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#1A5FA0,#0AACCC);border-radius:8px;padding:12px;">
+          <div style="font-size:10px;color:rgba(255,255,255,.8);margin-bottom:2px;">推定純売上合計（手数料控除後）</div>
+          <div style="font-size:22px;font-weight:800;color:#FFF;" id="rev-summary-net">¥0万</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- PG販売 入力テーブル -->
   <div class="card">
     <div class="card-title">🎟️ PG販売 フェーズ別・プレイガイド別 集計</div>
@@ -1366,7 +1655,7 @@ svg .area:hover{opacity:.8;}
 
       <!-- ① メールFC先行 4/24〜4/30 ：先行入場席のみ -->
       <tr style="background:rgba(26,95,160,.06);">
-        <td rowspan="9" style="font-weight:800;font-size:10px;"><span style="background:#1A5FA0;color:#fff;padding:2px 6px;border-radius:99px;">①</span><br>メールFC先行<br><span style="font-size:9px;font-weight:400;">4/24〜4/30</span><br><span style="font-size:9px;color:var(--dim);">先行入場のみ</span></td>
+        <td rowspan="10" style="font-weight:800;font-size:10px;"><span style="background:#1A5FA0;color:#fff;padding:2px 6px;border-radius:99px;">①</span><br>メールFC先行<br><span style="font-size:9px;font-weight:400;">4/24〜4/30</span><br><span style="font-size:9px;color:var(--dim);">先行入場のみ</span></td>
         <td rowspan="7" style="font-weight:800;font-size:10px;">先行入場<br>芝席</td>
         <td style="font-size:11px;">東芝　たまねぎ</td><td style="font-size:10px;">¥5,500</td>
         <td style="text-align:center;"><input type="number" class="sales-input pg-input" data-row="a1" data-col="rc" data-price="5500" min="0" value="0"></td>
@@ -2064,8 +2353,8 @@ function initBudgetCharts() {
       labels: ['5月', '6月', '7月', '8月', '9月'],
       datasets: [
         { label: 'FB/IG', data: [22, 38, 55, 37, 6], backgroundColor: 'rgba(26,95,160,.8)', borderRadius: 4 },
-        { label: 'YDA', data: [7, 13, 25, 15, 3], backgroundColor: 'rgba(200,144,16,.8)', borderRadius: 4 },
-        { label: 'YouTube', data: [0, 12, 20, 10, 1], backgroundColor: 'rgba(200,48,48,.8)', borderRadius: 4 },
+        { label: 'YDA', data: [10, 13, 25, 15, 3], backgroundColor: 'rgba(200,144,16,.8)', borderRadius: 4 },
+        { label: 'YouTube', data: [10, 0, 20, 10, 1], backgroundColor: 'rgba(200,48,48,.8)', borderRadius: 4 },
       ]
     },
     options: {
@@ -2097,9 +2386,9 @@ function initTargetCharts() {
   new Chart(document.getElementById('ageChart'), {
     type: 'bar',
     data: {
-      labels: ['10代', '20代', '30代', '40代', '50代', '60代以上'],
+      labels: ['10代', '20代', '30代', '40代', '50代', '60代以上（＋不明）'],
       datasets: [{
-        data: [5.4, 38.2, 17.1, 15.2, 12.1, 4.1],
+        data: [5.45, 38.24, 17.09, 15.21, 12.10, 4.09],
         backgroundColor: ['#A0C0E0','#1A5FA0','#2E8FD4','#1A8C50','#C89010','#8AACCB'],
         borderRadius: 6,
       }]
@@ -2111,6 +2400,39 @@ function initTargetCharts() {
         x: { grid: { display: false } }
       }
     }
+  });
+
+  new Chart(document.getElementById('genderChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['男性', '女性', '不明'],
+      datasets: [{
+        data: [41.43, 51.56, 7.01],
+        backgroundColor: ['#1A5FA0', '#E87FA0', '#CCCCCC'],
+        borderWidth: 2,
+        borderColor: '#fff',
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (i) => i.label + ': ' + i.raw + '%' } }
+      },
+      cutout: '60%',
+    },
+    plugins: [{ id: 'genderText', afterDraw(c) {
+      const {ctx, chartArea:{left,right,top,bottom}} = c;
+      const cx = (left+right)/2, cy = (top+bottom)/2;
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#0E1C2E';
+      ctx.font = 'bold 18px Arial';
+      ctx.fillText('41.4 : 51.6', cx, cy+6);
+      ctx.font = '10px Arial';
+      ctx.fillStyle = '#8AACCB';
+      ctx.fillText('男性 : 女性', cx, cy+20);
+      ctx.restore();
+    }}]
   });
 
   new Chart(document.getElementById('regionChart'), {
@@ -2463,9 +2785,58 @@ function calcSales() {
   const kpiBus = document.getElementById('kpi-bus-total');
   if (kpiBus) kpiBus.textContent = (busTotal + jimuTotal).toLocaleString() + '枚';
 
-  const totalRev = pgRevenue * 0.94 + busRevenue + jimuRevenue; // PGは6%手数料差引
+  const totalRev = (pgRevenue + busRevenue) * 0.94 + jimuRevenue; // PG・バス系とも6%手数料差引
   const kpiRev = document.getElementById('kpi-revenue');
   if (kpiRev) kpiRev.textContent = '¥' + Math.round(totalRev/10000) + '万';
+
+  // ── 売上詳細カード更新 ──
+  const getRowVal2 = (row) => rowTotals[row]?.total || 0;
+  const getRowRev  = (row) => (rowTotals[row]?.total||0) * (rowTotals[row]?.price||0);
+  const wan = (v) => '¥' + Math.round(v/10000) + '万';
+
+  // 席種別枚数・売上
+  const shibaS = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaN = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaJ = getRowVal2('c9');
+  const premS  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal2(r),0);
+  const premN  = ['b17','c8'].reduce((s,r)=>s+getRowVal2(r),0);
+  const cam    = ['a10','b18'].reduce((s,r)=>s+getRowVal2(r),0);
+
+  const revShibaS = shibaS * 5500;
+  const revShibaN = shibaN * 5500;
+  const revShibaJ = shibaJ * 3000;
+  const revPremS  = premS  * 9000;
+  const revPremN  = premN  * 9000;
+  const revCam    = cam    * 18000;
+
+  const pgGross = pgRevenue; // 全PG売上合計
+  const pgFee   = pgGross * 0.06;
+  const pgNet   = pgGross - pgFee;
+  const busFee  = busRevenue * 0.06;
+  const busNet  = busRevenue - busFee;
+  const netTotal = pgNet + busNet + jimuRevenue;
+
+  const setT = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+  setT('rev-cnt-shiba-s', shibaS.toLocaleString()+'枚');
+  setT('rev-cnt-shiba-n', shibaN.toLocaleString()+'枚');
+  setT('rev-cnt-shiba-j', shibaJ.toLocaleString()+'枚');
+  setT('rev-cnt-prem-s',  premS.toLocaleString()+'枚');
+  setT('rev-cnt-prem-n',  premN.toLocaleString()+'枚');
+  setT('rev-cnt-cam',     cam.toLocaleString()+'枚');
+  setT('rev-cnt-pg',      pgTotal.toLocaleString()+'枚');
+  setT('rev-cnt-bus',     busTotal.toLocaleString()+'枚');
+  setT('rev-shiba-s', wan(revShibaS));
+  setT('rev-shiba-n', wan(revShibaN));
+  setT('rev-shiba-j', wan(revShibaJ));
+  setT('rev-prem-s',  wan(revPremS));
+  setT('rev-prem-n',  wan(revPremN));
+  setT('rev-cam',     wan(revCam));
+  setT('rev-pg-gross',wan(pgGross));
+  setT('rev-bus',     wan(busRevenue));
+  setT('rev-summary-pg-gross', wan(pgGross));
+  setT('rev-summary-fee',      '−¥' + Math.round((pgFee+busFee)/10000) + '万');
+  setT('rev-summary-bus',      wan(busRevenue));
+  setT('rev-summary-net',      wan(netTotal));
 
   // グラフ更新
   updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows: rowTotals, colTotals });
@@ -2526,30 +2897,82 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
     });
   }
 
-  // ② 円グラフ：チャネル別構成比
-  const rcT = colTotals?.rc||0, rtT = colTotals?.rt||0, rxT = colTotals?.rx||0, kkT = colTotals?.kk||0;
+  // ② 席種別内訳グラフ（横棒 + 数値サマリー）
   if (salesCharts.pie) salesCharts.pie.destroy();
-  const pCtx = document.getElementById('pieChart')?.getContext('2d');
-  if (pCtx && (rcT+rtT+rxT+kkT+busTotal+jimuTotal) > 0) {
+  const pCtx = document.getElementById('seatChart')?.getContext('2d');
+
+  // row-totalから席種別合計を集計
+  const getRowVal = (row) => parseInt(document.querySelector(`.row-total[data-row="${row}"]`)?.textContent?.replace(/,/g,'')) || 0;
+  // 先行入場芝席（a1〜a7）
+  const shiba_senkou = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal(r),0);
+  // 通常芝席（b8〜b14, c1〜c7）
+  const shiba_tsujo  = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal(r),0);
+  // 先行入場プレミアム（a8〜a9, b15〜b16）
+  const prem_senkou  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal(r),0);
+  // 通常プレミアム（b17, c8）
+  const prem_tsujo   = ['b17','c8'].reduce((s,r)=>s+getRowVal(r),0);
+  // 芝自由上段（c9）
+  const shiba_jiyu   = getRowVal('c9');
+  // カメラマン（a10, b18）
+  const camera       = ['a10','b18'].reduce((s,r)=>s+getRowVal(r),0);
+
+  const seatLabels = ['先行入場芝席','通常芝席','先行入場プレミアム','通常プレミアム','芝自由上段','カメラマン'];
+  const seatData   = [shiba_senkou, shiba_tsujo, prem_senkou, prem_tsujo, shiba_jiyu, camera];
+  const seatColors = ['#1A5FA0','#2E8FD4','#1A8C50','#2EB870','#C89010','#8AACCB'];
+  const seatTotal  = seatData.reduce((a,b)=>a+b,0);
+
+  if (pCtx && seatTotal > 0) {
     salesCharts.pie = new Chart(pCtx, {
-      type: 'doughnut',
+      type: 'bar',
       data: {
-        labels: ['ローチケ','楽チケ','楽天Exp','KKDAY','バス系','その他'],
-        datasets: [{ data:[rcT,rtT,rxT,kkT,busTotal,jimuTotal], backgroundColor:['#1A5FA0','#1A8C50','#C89010','#6840A0','#0AACCC','#C83030'], borderWidth:2, borderColor:'#fff' }],
+        labels: seatLabels,
+        datasets: [{
+          data: seatData,
+          backgroundColor: seatColors,
+          borderRadius: 4,
+          borderSkipped: false,
+        }]
       },
       options: {
-        responsive:true, maintainAspectRatio:false,
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
         plugins: {
-          legend:{ position:'right', labels:{ font:{size:10}, boxWidth:12 }},
-          tooltip:{ callbacks:{ label:(i)=>i.label+': '+(i.raw||0).toLocaleString()+'枚' }},
+          legend: { display: false },
+          tooltip: { callbacks: { label: (i) => {
+            const pct = seatTotal > 0 ? (i.raw/seatTotal*100).toFixed(1) : 0;
+            return ' ' + i.raw.toLocaleString() + '枚（' + pct + '%）';
+          }}},
+          datalabels: { display: false },
+        },
+        scales: {
+          x: { beginAtZero: true, ticks: { font:{size:10} }, grid: { color:'#E8EEF4' } },
+          y: { ticks: { font:{size:10} }, grid: { display: false } },
         },
       },
     });
   } else if (pCtx) {
-    // データなし表示
-    const c = pCtx.canvas; pCtx.clearRect(0,0,c.width,c.height);
+    pCtx.clearRect(0,0,pCtx.canvas.width,pCtx.canvas.height);
     pCtx.fillStyle='#8AACCB'; pCtx.font='13px Arial'; pCtx.textAlign='center';
-    pCtx.fillText('データ入力後に表示されます', c.width/2, c.height/2);
+    pCtx.fillText('データ入力後に表示されます', pCtx.canvas.width/2, pCtx.canvas.height/2);
+  }
+
+  // 数値サマリーバッジ
+  const summaryEl = document.getElementById('seat-summary');
+  if (summaryEl) {
+    const shibaTotal = shiba_senkou + shiba_tsujo + shiba_jiyu;
+    const premTotal  = prem_senkou + prem_tsujo;
+    const summaryItems = [
+      { label:'芝席 合計', val: shibaTotal, color:'#1A5FA0' },
+      { label:'プレミアム 合計', val: premTotal, color:'#1A8C50' },
+      { label:'カメラマン', val: camera, color:'#8AACCB' },
+      { label:'全体合計', val: seatTotal, color:'#0E1C2E' },
+    ];
+    summaryEl.innerHTML = summaryItems.map(item =>
+      `<div style="background:${item.color}12;border:1px solid ${item.color}40;border-radius:6px;padding:4px 10px;text-align:center;">
+        <div style="font-size:9px;color:${item.color};font-weight:700;">${item.label}</div>
+        <div style="font-size:14px;font-weight:800;color:${item.color};">${item.val.toLocaleString()}枚</div>
+      </div>`
+    ).join('');
   }
 
   // ③ 積み上げ棒：フェーズ別×PG別
@@ -2958,9 +3381,11 @@ function parseAllSheets(json) {
       pgHaiken[pg] = struct.dataCols.reduce((sum, ci) => sum + (parseFloat(haikenRow[ci]) || 0), 0);
     }
 
-    // 最新累計（日計列の最後のデータ行）
+    // 最新累計（日計列の最後のデータ行・日付行のみ）
     let lastTotal = 0;
     for (let i = rows.length - 1; i >= 6; i--) {
+      const dateVal = rows[i][1];
+      if (!dateVal || !String(dateVal).match(/\d{4}-\d{2}-\d{2}|Date\(/)) continue;
       const v = parseFloat(rows[i][struct.totalCol]);
       if (!isNaN(v) && v > 0) { lastTotal = v; break; }
     }
@@ -2990,18 +3415,32 @@ function parseAllSheets(json) {
       [26, 'club_1'],  // クラツー 芝席（index26）
     ];
 
+    // ツアーシートのデータを確認（デバッグ）
+    console.log('[DEBUG] ツアー行数:', tourRows.length);
+    for (let i = 6; i < Math.min(tourRows.length, 16); i++) {
+      const d = tourRows[i][1];
+      const v8 = tourRows[i][8];
+      const v9 = tourRows[i][9];
+      if (d) console.log(`[DEBUG] ツアー行${i}: 日付=${String(d).substring(0,10)} idx8=${v8} idx9=${v9}`);
+    }
+
     tourMapping.forEach(([ci, key]) => {
       let lastVal = 0;
+      // 日付がある行のみ対象（合計行を除外）
       for (let i = tourRows.length - 1; i >= 6; i--) {
+        const dateVal = tourRows[i][1];
+        if (!dateVal || !String(dateVal).match(/\d{4}-\d{2}-\d{2}|Date\(/)) continue;
         const v = parseFloat(tourRows[i][ci]);
         if (!isNaN(v) && v > 0) { lastVal = v; break; }
       }
       busTotals[key] = lastVal;
     });
 
-    // ツアー合計 = 日計列(index31)の最新値（累計入力）
+    // ツアー合計 = 日計列(index31)の最新値（日付行のみ）
     pgTotals['ツアー'] = 0;
     for (let i = tourRows.length - 1; i >= 6; i--) {
+      const dateVal = tourRows[i][1];
+      if (!dateVal || !String(dateVal).match(/\d{4}-\d{2}-\d{2}|Date\(/)) continue;
       const v = parseFloat(tourRows[i][31]);
       if (!isNaN(v) && v > 0) { pgTotals['ツアー'] = v; break; }
     }
@@ -3051,16 +3490,15 @@ function parseAllSheets(json) {
     return null;
   };
 
-  // 指定期間内の各列の最終値（累計）を取得
+  // 指定期間内の各列の最終値（累計）を取得（日付行のみ・合計行除外）
   const getPhaseColValues = (rows, startDateStr, endDateStr) => {
     const result = {};
     for (let i = 6; i < rows.length; i++) {
       const row = rows[i];
       const d = toDateStr(row[1]);
-      if (!d) continue;
+      if (!d) continue; // 日付がない行（合計行等）はスキップ
       if (d < startDateStr) continue;
       if (d > endDateStr) break;
-      // この期間内の行で、値がある列だけ更新（累計なので後勝ち）
       for (let ci = 4; ci <= 35; ci++) {
         const v = parseFloat(row[ci]);
         if (!isNaN(v) && v > 0) {
@@ -3068,7 +3506,7 @@ function parseAllSheets(json) {
         }
       }
     }
-    return result; // {列インデックス: 最終累計値}
+    return result;
   };
 
   // フェーズ開始日
