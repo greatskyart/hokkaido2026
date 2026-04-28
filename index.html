@@ -188,6 +188,19 @@ svg .area:hover{opacity:.8;}
   .budget-bar-diff{display:none;}
   .month-budget-tag{display:none;}
 }
+@media print {
+  body { background: #FFF !important; }
+  .tab-nav, .gs-sync-card { display: none !important; }
+  .tab-content { display: none !important; }
+  #tab-sales { display: block !important; padding: 0 !important; }
+  #tab-sales button { display: none !important; }
+  .card { box-shadow: none !important; border: 1px solid #DDD !important; break-inside: avoid; margin-bottom: 10px; }
+  input[type=number] { border: none !important; background: transparent !important; -webkit-appearance: none; }
+  .kpi-bar-wrap, .progress-track { display: none !important; }
+  .grid2 { display: block !important; }
+  .grid2 > * { margin-bottom: 10px !important; }
+  @page { margin: 12mm; size: A4 portrait; }
+}
 </style>
 </head>
 <body>
@@ -1490,6 +1503,44 @@ svg .area:hover{opacity:.8;}
 
 </div>
 
+<!-- PDF出力 選択モーダル -->
+<div id="printModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#FFF;border-radius:16px;padding:28px;width:360px;box-shadow:0 8px 40px rgba(0,0,0,.2);">
+    <div style="font-size:16px;font-weight:800;color:#0E1C2E;margin-bottom:4px;">🖨️ PDF出力 項目選択</div>
+    <div style="font-size:11px;color:#8AACCB;margin-bottom:16px;">出力したい項目にチェックを入れてください</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="kpi" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">📊 KPIサマリー（上段5枚）</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="seat-chart" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">🪑 席種別 販売内訳グラフ</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="trend" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">📈 週次販売推移グラフ</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="revenue" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">💴 売上詳細（手数料控除）</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="pg-table" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">🎟️ PG販売 フェーズ別集計テーブル</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:8px;border:1px solid #E8EEF4;">
+        <input type="checkbox" class="print-check" data-target="tour" checked style="width:16px;height:16px;accent-color:#1A5FA0;">
+        <span style="font-size:12px;font-weight:700;">🚌 ツアー系・事務局 集計</span>
+      </label>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="executePrint()" style="flex:1;padding:10px;background:#1A8C50;color:#FFF;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;">🖨️ 印刷 / PDF保存</button>
+      <button onclick="document.getElementById('printModal').style.display='none';" style="padding:10px 20px;background:#EEE;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;">キャンセル</button>
+    </div>
+  </div>
+</div>
+
 <!-- ======================== TAB: 販売集計 ======================== -->
 <div id="tab-sales" class="tab-content">
 
@@ -1517,11 +1568,12 @@ svg .area:hover{opacity:.8;}
       <span id="sales-sync-status"></span>
       <button onclick="saveSalesData()" style="padding:7px 18px;background:var(--blue);color:#FFF;border:none;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit;">💾 保存・同期</button>
       <button onclick="resetSalesData()" style="padding:7px 14px;background:#EEE;color:var(--sub);border:none;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit;">リセット</button>
+      <button onclick="openPrintModal()" style="padding:7px 14px;background:#1A8C50;color:#FFF;border:none;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit;">🖨️ PDF出力</button>
     </div>
   </div>
 
   <!-- KPIサマリー -->
-  <div class="grid4" id="sales-kpi-row" style="grid-template-columns:repeat(5,1fr);">
+  <div class="grid4" id="sales-kpi-row" data-print-id="kpi" style="grid-template-columns:repeat(5,1fr);">
     <div class="kpi-card">
       <div class="kpi-label">PG販売＋バス系 合計</div>
       <div class="kpi-value" style="color:var(--blue)" id="kpi-pg-total">0</div>
@@ -1568,7 +1620,7 @@ svg .area:hover{opacity:.8;}
     </div>
 
     <!-- 席種別内訳グラフ -->
-    <div class="card">
+    <div class="card" data-print-id="seat-chart">
       <div class="card-title">🪑 席種別 販売内訳</div>
       <div style="position:relative;height:200px;">
         <canvas id="seatChart"></canvas>
@@ -1578,7 +1630,7 @@ svg .area:hover{opacity:.8;}
 
   </div>
 
-  <div style="margin-bottom:14px;">
+  <div style="margin-bottom:14px;" data-print-id="trend">
     <!-- 週次販売推移（累計）全幅 -->
     <div class="card">
       <div class="card-title">📈 週次販売推移（月〜日曜 週単位集計・累計）</div>
@@ -1589,7 +1641,7 @@ svg .area:hover{opacity:.8;}
   </div>
 
   <!-- 売上詳細カード -->
-  <div class="card" style="margin-bottom:14px;">
+  <div class="card" style="margin-bottom:14px;" data-print-id="revenue">
     <div class="card-title">💴 売上詳細（席種別内訳・手数料控除）</div>
     <div class="grid2" style="gap:12px;">
       <!-- 左：席種別売上内訳テーブル -->
@@ -1632,7 +1684,7 @@ svg .area:hover{opacity:.8;}
   </div>
 
   <!-- PG販売 入力テーブル -->
-  <div class="card">
+  <div class="card" data-print-id="pg-table">
     <div class="card-title">🎟️ PG販売 フェーズ別・プレイガイド別 集計</div>
     <div style="font-size:11px;color:var(--sub);margin-bottom:8px;">※配券数・数値はスプレッドシートから自動取得。手動入力も可。</div>
     <div style="overflow-x:auto;">
@@ -2193,7 +2245,7 @@ svg .area:hover{opacity:.8;}
   </div>
 
   <!-- ツアー・事務局集計 -->
-  <div class="grid2">
+  <div class="grid2" data-print-id="tour">
     <div class="card">
       <div class="card-title">🚌 ツアー系 販売集計</div>
       <table>
@@ -2420,7 +2472,44 @@ svg .area:hover{opacity:.8;}
 </div><!-- /main -->
 
 <script>
-// ── TAB SWITCH ──
+// PDF出力モーダル
+function openPrintModal() {
+  const modal = document.getElementById('printModal');
+  modal.style.display = 'flex';
+}
+
+function executePrint() {
+  const modal = document.getElementById('printModal');
+  modal.style.display = 'none';
+
+  // 選択された項目を取得
+  const checked = new Set();
+  document.querySelectorAll('.print-check:checked').forEach(cb => checked.add(cb.dataset.target));
+
+  // 非選択のセクションを一時的に非表示
+  const hidden = [];
+  document.querySelectorAll('[data-print-id]').forEach(el => {
+    if (!checked.has(el.dataset.printId)) {
+      el.style.display = 'none';
+      hidden.push(el);
+    }
+  });
+
+  // 販売集計タブを表示
+  document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+  document.getElementById('tab-sales').style.display = 'block';
+
+  // 印刷
+  setTimeout(() => {
+    window.print();
+    // 印刷後に元に戻す
+    hidden.forEach(el => el.style.display = '');
+    document.querySelectorAll('.tab-content').forEach(t => t.style.display = '');
+    switchTab('sales', document.querySelector('.tab-btn[onclick*="sales"]'));
+  }, 300);
+}
+
+
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
