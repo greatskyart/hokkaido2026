@@ -2198,29 +2198,31 @@ svg .area:hover{opacity:.8;}
       <div class="card-title">🚌 ツアー系 販売集計</div>
       <table>
         <tr><th>区分</th><th>路線・席種</th><th style="text-align:center;">販売枚数</th><th style="text-align:center;">売上</th></tr>
+        <!-- HIS国内バスパック idx4〜7 -->
         <tr><td rowspan="4" style="font-weight:800;">HIS<br>バスパック</td>
-          <td style="font-size:11px;">先行入場芝席 栄町（ミルク）</td>
+          <td style="font-size:11px;">先行入場芝席 栄町</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t1">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">先行入場芝席 札幌駅北口（ミルク）</td>
+        <tr><td style="font-size:11px;">先行入場芝席 札幌駅</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t2" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t2">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">先行入場プレミアム 栄町（前方5列）</td>
+        <tr><td style="font-size:11px;">先行入場プレミアム 栄町</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t3" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t3">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">先行入場プレミアム 札幌駅北口（前方5列）</td>
+        <tr><td style="font-size:11px;">先行入場プレミアム 札幌駅</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_t4" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_t4">¥0</td>
         </tr>
+        <!-- HIS国内通常バス idx8〜11 -->
         <tr><td rowspan="4" style="font-weight:800;">HIS<br>通常バス</td>
-          <td style="font-size:11px;">東芝 栄町（たまねぎ）</td>
+          <td style="font-size:11px;">東芝 栄町</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_n1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_n1">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">東芝 札幌駅北口（たまねぎ）</td>
+        <tr><td style="font-size:11px;">東芝 札幌駅</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_n2" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_n2">¥0</td>
         </tr>
@@ -2228,46 +2230,73 @@ svg .area:hover{opacity:.8;}
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_n3" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_n3">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">椅子席 札幌駅北口</td>
+        <tr><td style="font-size:11px;">椅子席 札幌駅</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_n4" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_n4">¥0</td>
         </tr>
-        <tr><td rowspan="2" style="font-weight:800;">阪急<br>ツアー</td>
-          <td style="font-size:11px;">芝席（たまねぎ）</td>
+        <!-- HIS海外 idx12〜13 -->
+        <tr><td rowspan="2" style="font-weight:800;">HIS<br>海外</td>
+          <td style="font-size:11px;">東芝（ミルク）</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_os1" data-price="5500" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_os1">¥0</td>
+        </tr>
+        <tr><td style="font-size:11px;">椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="his_os2" data-price="9000" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="his_os2">¥0</td>
+        </tr>
+        <!-- 阪急ツアー idx14 -->
+        <tr><td style="font-weight:800;">阪急<br>ツアー</td>
+          <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="han_t1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="han_t1">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">椅子席</td>
-          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="han_t2" data-price="9000" min="0" value="0"></td>
-          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="han_t2">¥0</td>
-        </tr>
+        <!-- 阪急フリー idx15 -->
         <tr><td style="font-weight:800;">阪急<br>フリー</td>
-          <td style="font-size:11px;">芝席（たまねぎ）</td>
+          <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="han_f1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="han_f1">¥0</td>
         </tr>
-        <tr><td rowspan="3" style="font-weight:800;">JTN<br>外商</td>
+        <!-- JTN外商 idx16〜17 -->
+        <tr><td rowspan="2" style="font-weight:800;">JTN<br>外商</td>
           <td style="font-size:11px;">椅子席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtn_1" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtn_1">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">エキサイティングシート</td>
-          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtn_2" data-price="50000" min="0" value="0"></td>
+        <tr><td style="font-size:11px;">最前列椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtn_2" data-price="20000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtn_2">¥0</td>
         </tr>
-        <tr><td style="font-size:11px;">テーブル椅子席</td>
-          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtn_3" data-price="90000" min="0" value="0"></td>
-          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtn_3">¥0</td>
-        </tr>
+        <!-- JTB idx18 -->
         <tr><td style="font-weight:800;">JTB</td>
-          <td style="font-size:11px;">芝席（ミルク）</td>
+          <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtb_1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtb_1">¥0</td>
         </tr>
-        <tr><td style="font-weight:800;">クラツー</td>
-          <td style="font-size:11px;">芝席（とうきび・西芝赤）</td>
+        <!-- クラツー idx19〜20 -->
+        <tr><td rowspan="2" style="font-weight:800;">クラツー</td>
+          <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="club_1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="club_1">¥0</td>
+        </tr>
+        <tr><td style="font-size:11px;">椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="club_2" data-price="9000" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="club_2">¥0</td>
+        </tr>
+        <!-- ほっとバス idx21〜22 -->
+        <tr><td rowspan="2" style="font-weight:800;">ほっとバス</td>
+          <td style="font-size:11px;">芝席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="hot_1" data-price="5500" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="hot_1">¥0</td>
+        </tr>
+        <tr><td style="font-size:11px;">椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="hot_2" data-price="9000" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="hot_2">¥0</td>
+        </tr>
+        <!-- 札幌通運 idx23 -->
+        <tr><td style="font-weight:800;">札幌通運</td>
+          <td style="font-size:11px;">芝席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="ts1" data-price="5500" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="ts1">¥0</td>
         </tr>
         <tr style="background:#EDF3F8;">
           <td colspan="2"><strong>ツアー系 合計</strong></td>
@@ -2276,7 +2305,6 @@ svg .area:hover{opacity:.8;}
         </tr>
       </table>
     </div>
-
     <div class="card">
       <div class="card-title">🏢 事務局・その他 集計</div>
       <table>
@@ -3546,47 +3574,51 @@ function parseAllSheets(json) {
     // フェーズ別配券数をwindowにキャッシュ（calcSalesで参照）
     window._phaseHaiken = { a: haiken1, b: haiken2, c: haiken3, d: haiken4 };
 
-    // ── 先行入場芝席（col4〜10）: ローチケ+楽チケ → a1〜a7, b1〜b7 ──
+    // ── 各席種のhaiken-cellをフェーズ別行から正確に反映 ──
+
+    // ①先行入場芝席（a1〜a7）: rc7+rt7のidx4〜10
     [4,5,6,7,8,9,10].forEach((ci, i) => {
-      const total = n(rc6,ci) + n(rt6,ci);
-      setHaikenCell(`a${i+1}`, total);
-      setHaikenCell(`b${i+1}`, total); // ②でも同じ先行入場芝席枠
+      setHaikenCell(`a${i+1}`, n(rc7,ci) + n(rt7,ci));
     });
 
-    // ── 通常芝席（rc:col11〜17, rt:col11〜17, rx:col4〜6, kk:col4〜6）──
-    // 席種別: たまねぎ/ミルク/とうきび/赤/青/黄/緑
-    const tsujoTotals = [
-      n(rc6,11)+n(rt6,11)+n(rx6,4)+n(kk6,4),   // たまねぎ → b8,c1
-      n(rc6,12)+n(rt6,12)+n(rx6,5)+n(kk6,5),   // ミルク   → b9,c2
-      n(rc6,13)+n(rt6,13)+n(rx6,6)+n(kk6,6),   // とうきび → b10,c3
-      n(rc6,14)+n(rt6,14),                       // 赤       → b11,c4
-      n(rc6,15)+n(rt6,15),                       // 青       → b12,c5
-      n(rc6,16)+n(rt6,16),                       // 黄       → b13,c6
-      n(rc6,17)+n(rt6,17),                       // 緑       → b14,c7
-    ];
-    tsujoTotals.forEach((total, i) => {
+    // ①先行入場プレミアム（a8〜a9）: rc7+rt7のidx18〜19
+    setHaikenCell('a8',  n(rc7,18) + n(rt7,18));
+    setHaikenCell('a9',  n(rc7,19) + n(rt7,19));
+
+    // ①カメラマン（a10）: rc7+rt7のidx21
+    setHaikenCell('a10', n(rc7,21) + n(rt7,21));
+
+    // ②先行入場芝席（b1〜b7）: ①と同じ枠（先行入場芝席は①②共通）
+    [4,5,6,7,8,9,10].forEach((ci, i) => {
+      setHaikenCell(`b${i+1}`, n(rc7,ci) + n(rt7,ci));
+    });
+
+    // ②通常芝席（b8〜b14）: rc8+rt8のidx11〜17 + rx8のidx4〜10 + kk8のidx4〜10
+    const tsujoIdx = [11,12,13,14,15,16,17];
+    const rxkkIdx  = [4,5,6,7,8,9,10];
+    tsujoIdx.forEach((ci, i) => {
+      const rxVal = n(rx8, rxkkIdx[i]);
+      const kkVal = n(kk8, rxkkIdx[i]);
+      const total = n(rc8,ci) + n(rt8,ci) + rxVal + kkVal;
       setHaikenCell(`b${i+8}`, total);
-      setHaikenCell(`c${i+1}`, total);
+      setHaikenCell(`c${i+1}`, total); // ③通常芝席も同じ配券数
     });
 
-    // ── 先行入場プレミアム（col18〜19）: ローチケ+楽チケ → a8〜a9, b15〜b16 ──
-    const prem1 = n(rc6,18)+n(rt6,18);
-    const prem2 = n(rc6,19)+n(rt6,19);
-    setHaikenCell('a8',  prem1); setHaikenCell('b15', prem1);
-    setHaikenCell('a9',  prem2); setHaikenCell('b16', prem2);
+    // ②先行入場プレミアム（b15〜b16）: rc8+rt8のidx18〜19
+    setHaikenCell('b15', n(rc8,18) + n(rt8,18));
+    setHaikenCell('b16', n(rc8,19) + n(rt8,19));
 
-    // ── 通常プレミアム（rc:col20, rt:col20, kk:col7）→ b17, c8 ──
-    const premTsujo = n(rc6,20)+n(rt6,20)+n(kk6,7);
-    setHaikenCell('b17', premTsujo);
-    setHaikenCell('c8',  premTsujo);
+    // ②通常プレミアム（b17）: rc8+rt8のidx20 + kk8のidx11
+    setHaikenCell('b17', n(rc8,20) + n(rt8,20) + n(kk8,11));
 
-    // ── カメラマン（col21）: ローチケ+楽チケ → a10, b18 ──
-    const cam = n(rc6,21)+n(rt6,21);
-    setHaikenCell('a10', cam);
-    setHaikenCell('b18', cam);
+    // ②カメラマン（b18）: rc8+rt8のidx21
+    setHaikenCell('b18', n(rc8,21) + n(rt8,21));
 
-    // ── 芝自由上段（rx:col7, kk:col8）→ c9 ──
-    setHaikenCell('c9', n(rx6,7)+n(kk6,8));
+    // ③通常プレミアム（c8）: ②と同じ配券数
+    setHaikenCell('c8', n(rc8,20) + n(rt8,20) + n(kk8,11));
+
+    // ③芝自由上段（c9）: rc9のidx22 + rt9のidx22 + rx9のidx11 + kk9のidx12
+    setHaikenCell('c9', n(rc9,22) + n(rt9,22) + n(rx9,11) + n(kk9,12));
   }
   // 各PGシートの最新累計（最後のデータ行）を取得
   const pgTotals = {};
@@ -3621,22 +3653,29 @@ function parseAllSheets(json) {
   if (tourRows) {
     // スプレッドシート列(index) → bus-inputのdata-key 正しいマッピング
     // ツアーも累計入力 → 列ごとに最後に入力された値を取得
+    // スプレッドシート列(index) → bus-inputのdata-key 正しいマッピング
+    // ツアーも累計入力 → 日付行のみを対象に最後の値を取得
     const tourMapping = [
-      [4,  'his_t1'],  // HIS特典東芝 栄町（index4）
-      [5,  'his_t2'],  // HIS特典東芝 札幌駅（index5）
-      [6,  'his_t3'],  // HIS特典椅子 栄町（index6）
-      [7,  'his_t4'],  // HIS特典椅子 札幌駅（index7）
-      [8,  'his_n1'],  // HIS東芝 栄町（index8）
-      [9,  'his_n2'],  // HIS東芝 札幌駅（index9）
-      [10, 'his_n3'],  // HIS椅子 栄町（index10）
-      [11, 'his_n4'],  // HIS椅子 札幌駅（index11）
-      [19, 'han_t1'],  // 阪急ツアー 芝席（index19）
-      [20, 'han_f1'],  // 阪急フリー 芝席（index20）
-      [21, 'jtn_1'],   // JTN外商 椅子席（index21）
-      [23, 'jtn_2'],   // JTN外商 エキサイティング（index23）
-      [24, 'jtn_3'],   // JTN外商 テーブル椅子（index24）
-      [25, 'jtb_1'],   // JTB 芝席（index25）
-      [26, 'club_1'],  // クラツー 芝席（index26）
+      [4,  'his_t1'],   // HIS国内 先行入場芝席 栄町（idx4）
+      [5,  'his_t2'],   // HIS国内 先行入場芝席 札幌駅（idx5）
+      [6,  'his_t3'],   // HIS国内 先行入場プレミアム 栄町（idx6）
+      [7,  'his_t4'],   // HIS国内 先行入場プレミアム 札幌駅（idx7）
+      [8,  'his_n1'],   // HIS国内 東芝 栄町（idx8）
+      [9,  'his_n2'],   // HIS国内 東芝 札幌駅（idx9）
+      [10, 'his_n3'],   // HIS国内 椅子 栄町（idx10）
+      [11, 'his_n4'],   // HIS国内 椅子 札幌駅（idx11）
+      [12, 'his_os1'],  // HIS海外 東芝ミルク（idx12）
+      [13, 'his_os2'],  // HIS海外 椅子席（idx13）
+      [14, 'han_t1'],   // 阪急ツアー 芝席（idx14）
+      [15, 'han_f1'],   // 阪急フリー 芝席（idx15）
+      [16, 'jtn_1'],    // JTN外商 椅子席（idx16）
+      [17, 'jtn_2'],    // JTN外商 最前列椅子席（idx17）
+      [18, 'jtb_1'],    // JTB 芝席（idx18）
+      [19, 'club_1'],   // クラツー 芝席（idx19）
+      [20, 'club_2'],   // クラツー 椅子席（idx20）
+      [21, 'hot_1'],    // ほっとバス 芝席（idx21）
+      [22, 'hot_2'],    // ほっとバス 椅子席（idx22）
+      [23, 'ts1'],      // 札幌通運 芝席（idx23）
     ];
 
     // ツアーシートのデータを確認（デバッグ）
@@ -3660,12 +3699,12 @@ function parseAllSheets(json) {
       busTotals[key] = lastVal;
     });
 
-    // ツアー合計 = 日計列(index31)の最新値（日付行のみ）
+    // ツアー合計 = 日計列(idx24=col25)の最新値（日付行のみ・累計入力）
     pgTotals['ツアー'] = 0;
     for (let i = tourRows.length - 1; i >= 6; i--) {
       const dateVal = tourRows[i][1];
       if (!dateVal || !String(dateVal).match(/\d{4}-\d{2}-\d{2}|Date\(/)) continue;
-      const v = parseFloat(tourRows[i][31]);
+      const v = parseFloat(tourRows[i][24]);  // idx24=日計列(col25)
       if (!isNaN(v) && v > 0) { pgTotals['ツアー'] = v; break; }
     }
   }
