@@ -1441,30 +1441,30 @@ svg .area:hover{opacity:.8;}
     <table>
       <tr><th>フェーズ</th><th>期間</th><th>販売目標</th><th>累計目標</th><th>施策</th></tr>
       <tr>
-        <td>① メールFC早割</td>
+        <td>① FC先行</td>
         <td>4/24（金）〜4/30（木）</td>
-        <td>600枚</td>
-        <td>600枚</td>
+        <td>1,000枚</td>
+        <td>1,000枚</td>
         <td>メールリスト2,000人へ配信・限定感訴求</td>
       </tr>
       <tr>
         <td>② PG早割先行</td>
         <td>5/1（金）〜6/19（金）</td>
-        <td>2,400枚</td>
-        <td>3,000枚</td>
+        <td>8,000枚</td>
+        <td>9,000枚</td>
         <td>WEB広告開始・オフィシャル先行訴求・SNS強化</td>
       </tr>
       <tr>
         <td>③ 早割先行</td>
         <td>6/20（土）〜8/25（火）</td>
-        <td>12,000枚</td>
-        <td>15,000枚</td>
+        <td>10,000枚</td>
+        <td>19,000枚</td>
         <td>WEB広告フル稼働（7月ピーク）・8/25終了ラストコール</td>
       </tr>
       <tr>
         <td>④ 一般販売</td>
         <td>8/26（水）〜9/4（金）</td>
-        <td>5,748枚</td>
+        <td>2,228枚</td>
         <td>21,228枚</td>
         <td>残席訴求・直前広告</td>
       </tr>
@@ -1484,6 +1484,158 @@ svg .area:hover{opacity:.8;}
       </tr>
     </table>
   </div>
+
+  <!-- フェーズ別 目標 vs 実績 -->
+  <div class="card">
+    <div class="card-title">🎯 フェーズ別 目標 vs 実績（PG＋バス系合算）</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
+      <!-- ① -->
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #E8EEF4;">
+        <div style="background:#1A5FA0;padding:8px 12px;color:#fff;font-weight:800;font-size:11px;">① FC先行　4/24〜4/30</div>
+        <div style="padding:10px 12px;background:#F8FBFF;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--sub);">実績</span>
+            <span style="font-size:18px;font-weight:800;color:#1A5FA0;" id="phase-actual-a">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-bottom:4px;">
+            <span>目標</span><span>1,000枚</span>
+          </div>
+          <div style="background:#E8EEF4;border-radius:4px;height:5px;overflow:hidden;margin-bottom:4px;">
+            <div id="phase-bar-a" style="height:5px;background:#1A5FA0;width:0%;border-radius:4px;transition:width .5s;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;">
+            <span style="font-weight:800;" id="phase-rate-disp-a">0.0%</span>
+            <span style="color:var(--dim);">残 <span id="phase-remain-a">1,000</span>枚</span>
+          </div>
+          <div style="border-top:1px dashed #D0DCE8;padding-top:5px;">
+            <div style="font-size:9px;color:var(--sub);margin-bottom:2px;">損益分岐ライン（目標×80%）</div>
+            <div style="background:#E8EEF4;border-radius:4px;height:4px;overflow:hidden;margin-bottom:2px;">
+              <div id="phase-break-bar-a" style="height:4px;background:#1A8C50;width:0%;border-radius:4px;transition:width .5s;"></div>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#1A8C50;" id="phase-break-rate-a">0.0%</div>
+          </div>
+        </div>
+      </div>
+      <!-- ② -->
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #E8EEF4;">
+        <div style="background:#0AACCC;padding:8px 12px;color:#fff;font-weight:800;font-size:11px;">② PG早割　5/1〜6/19</div>
+        <div style="padding:10px 12px;background:#F5FCFF;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--sub);">実績</span>
+            <span style="font-size:18px;font-weight:800;color:#0AACCC;" id="phase-actual-b">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-bottom:4px;">
+            <span>目標</span><span>8,000枚</span>
+          </div>
+          <div style="background:#E8EEF4;border-radius:4px;height:5px;overflow:hidden;margin-bottom:4px;">
+            <div id="phase-bar-b" style="height:5px;background:#0AACCC;width:0%;border-radius:4px;transition:width .5s;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;">
+            <span style="font-weight:800;" id="phase-rate-disp-b">0.0%</span>
+            <span style="color:var(--dim);">残 <span id="phase-remain-b">8,000</span>枚</span>
+          </div>
+          <div style="border-top:1px dashed #D0DCE8;padding-top:5px;">
+            <div style="font-size:9px;color:var(--sub);margin-bottom:2px;">損益分岐ライン（目標×80%）</div>
+            <div style="background:#E8EEF4;border-radius:4px;height:4px;overflow:hidden;margin-bottom:2px;">
+              <div id="phase-break-bar-b" style="height:4px;background:#1A8C50;width:0%;border-radius:4px;transition:width .5s;"></div>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#1A8C50;" id="phase-break-rate-b">0.0%</div>
+          </div>
+        </div>
+      </div>
+      <!-- ③ -->
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #E8EEF4;">
+        <div style="background:#1A8C50;padding:8px 12px;color:#fff;font-weight:800;font-size:11px;">③ 早割先行　6/20〜8/25</div>
+        <div style="padding:10px 12px;background:#F5FFF8;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--sub);">実績</span>
+            <span style="font-size:18px;font-weight:800;color:#1A8C50;" id="phase-actual-c">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-bottom:4px;">
+            <span>目標</span><span>10,000枚</span>
+          </div>
+          <div style="background:#E8EEF4;border-radius:4px;height:5px;overflow:hidden;margin-bottom:4px;">
+            <div id="phase-bar-c" style="height:5px;background:#1A8C50;width:0%;border-radius:4px;transition:width .5s;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;">
+            <span style="font-weight:800;" id="phase-rate-disp-c">0.0%</span>
+            <span style="color:var(--dim);">残 <span id="phase-remain-c">10,000</span>枚</span>
+          </div>
+          <div style="border-top:1px dashed #D0DCE8;padding-top:5px;">
+            <div style="font-size:9px;color:var(--sub);margin-bottom:2px;">損益分岐ライン（目標×80%）</div>
+            <div style="background:#E8EEF4;border-radius:4px;height:4px;overflow:hidden;margin-bottom:2px;">
+              <div id="phase-break-bar-c" style="height:4px;background:#1A8C50;width:0%;border-radius:4px;transition:width .5s;"></div>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#1A8C50;" id="phase-break-rate-c">0.0%</div>
+          </div>
+        </div>
+      </div>
+      <!-- ④ -->
+      <div style="border-radius:10px;overflow:hidden;border:1px solid #E8EEF4;">
+        <div style="background:#C83030;padding:8px 12px;color:#fff;font-weight:800;font-size:11px;">④ 一般販売　8/26〜9/4</div>
+        <div style="padding:10px 12px;background:#FFF8F8;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+            <span style="font-size:11px;color:var(--sub);">実績</span>
+            <span style="font-size:18px;font-weight:800;color:#C83030;" id="phase-actual-d">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);margin-bottom:4px;">
+            <span>目標</span><span>2,228枚</span>
+          </div>
+          <div style="background:#E8EEF4;border-radius:4px;height:5px;overflow:hidden;margin-bottom:4px;">
+            <div id="phase-bar-d" style="height:5px;background:#C83030;width:0%;border-radius:4px;transition:width .5s;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;">
+            <span style="font-weight:800;" id="phase-rate-disp-d">0.0%</span>
+            <span style="color:var(--dim);">残 <span id="phase-remain-d">2,228</span>枚</span>
+          </div>
+          <div style="border-top:1px dashed #D0DCE8;padding-top:5px;">
+            <div style="font-size:9px;color:var(--sub);margin-bottom:2px;">損益分岐ライン（目標×80%）</div>
+            <div style="background:#E8EEF4;border-radius:4px;height:4px;overflow:hidden;margin-bottom:2px;">
+              <div id="phase-break-bar-d" style="height:4px;background:#1A8C50;width:0%;border-radius:4px;transition:width .5s;"></div>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#1A8C50;" id="phase-break-rate-d">0.0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ペース予測 -->
+    <div style="background:#F0F4F8;border-radius:8px;padding:14px;">
+      <div style="font-size:11px;font-weight:800;color:var(--sub);margin-bottom:10px;">📈 ペース予測</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">🎯 着地予測（直近2週間ペース）</div>
+          <div style="font-size:16px;font-weight:800;color:#1A5FA0;" id="pace-forecast">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;" id="pace-daily-avg">1日平均：—枚/日</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">⚡ 目標達成に必要な1日あたり</div>
+          <div style="font-size:16px;font-weight:800;color:#C83030;" id="daily-needed">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;" id="break-daily-needed">損益分岐：—枚/日</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">📅 開幕まで残り</div>
+          <div style="font-size:16px;font-weight:800;color:#1A8C50;" id="days-remain">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;" id="phase-days-remain">現フェーズ残り：—日</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">📊 先週比（週次トレンド）</div>
+          <div style="font-size:16px;font-weight:800;" id="week-trend">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;" id="week-detail">先週：—枚 / 先々週：—枚</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">🚀 現フェーズ 必要ペース</div>
+          <div style="font-size:16px;font-weight:800;color:#C89010;" id="phase-daily-needed">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;" id="phase-needed-detail">フェーズ残枚数：—枚</div>
+        </div>
+        <div style="background:#fff;border-radius:6px;padding:10px;border:1px solid #E8EEF4;">
+          <div style="font-size:9px;color:var(--sub);margin-bottom:3px;">💴 損益分岐 達成見込み</div>
+          <div style="font-size:16px;font-weight:800;" id="break-forecast">—</div>
+          <div style="font-size:9px;color:var(--dim);margin-top:2px;">16,920枚に対しての着地予測</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="card">
     <div class="card-title">📣 SNS・フォロワー目標</div>
@@ -3005,6 +3157,111 @@ function calcSales() {
 
   // KPIサマリー
   const grandTotal = pgTotal + busTotal; // ツアーまで含む、事務局除外
+
+  // ── フェーズ別 目標 vs 実績（PG＋バス系合算）──
+  const phaseTargets   = { a: 1000, b: 8000, c: 10000, d: 2228 }; // 目標21,228枚
+  const phaseBreakTgts = { a:  800, b: 6400, c:  8000, d: 1782 }; // 各フェーズ目標×80%（損益分岐ベース）
+  const phaseColors    = { a:'#1A5FA0', b:'#0AACCC', c:'#1A8C50', d:'#C83030' };
+  const busByPhase     = { a:0, b:0, c:0, d:0 };
+  document.querySelectorAll('.bus-input').forEach(el => {
+    const v = parseInt(el.value) || 0;
+    if (['his_t1','his_t2','his_t3','his_t4'].includes(el.dataset.key||'')) busByPhase.a += v;
+    else busByPhase.b += v;
+  });
+  Object.entries(phaseGroups).forEach(([phase, rows]) => {
+    const actual   = rows.reduce((s, r) => s + (rowTotals[r]?.total || 0), 0) + (busByPhase[phase]||0);
+    const target   = phaseTargets[phase]   || 0;
+    const breakTgt = phaseBreakTgts[phase] || 0;
+    const rate     = target   > 0 ? actual / target   * 100 : 0;
+    const bRate    = breakTgt > 0 ? actual / breakTgt * 100 : 0;
+    const remain   = Math.max(0, target - actual);
+    const setEl = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    setEl(`phase-actual-${phase}`,     actual.toLocaleString() + '枚');
+    setEl(`phase-remain-${phase}`,     remain.toLocaleString());
+    setEl(`phase-rate-disp-${phase}`,  rate.toFixed(1) + '%');
+    setEl(`phase-break-rate-${phase}`, bRate.toFixed(1) + '%');
+    const bar = document.getElementById(`phase-bar-${phase}`);
+    if (bar) { bar.style.width = Math.min(100,rate).toFixed(1)+'%'; bar.style.background = rate>=100?'var(--green)':phaseColors[phase]; }
+    const bBar = document.getElementById(`phase-break-bar-${phase}`);
+    if (bBar) bBar.style.width = Math.min(100,bRate).toFixed(1)+'%';
+    const rEl = document.getElementById(`phase-rate-disp-${phase}`);
+    if (rEl) rEl.style.color = rate>=100?'var(--green)':rate>=80?'var(--gold)':phaseColors[phase];
+    const bEl = document.getElementById(`phase-break-rate-${phase}`);
+    if (bEl) bEl.style.color = bRate>=100?'var(--green)':bRate>=80?'var(--gold)':'#1A8C50';
+  });
+  // ── ペース予測（拡張版）──
+  const today2 = new Date(); today2.setHours(0,0,0,0);
+  // タイムゾーンずれを避けるためローカル日付で生成
+  const makeDate = (str) => { const [y,m,d] = str.split('-').map(Number); return new Date(y, m-1, d); };
+  const eventDate = makeDate('2026-09-05');
+  const startDate = makeDate('2026-04-24');
+  const daysElapsed = Math.max(1, Math.floor((today2 - startDate) / 86400000) + 1); // 当日含む
+  const daysLeft    = Math.max(0, Math.floor((eventDate - today2) / 86400000));
+  const daysTotal   = Math.floor((eventDate - startDate) / 86400000) + 1;
+
+  // 直近2週間 or 実績日数（短い方）の平均ペース
+  const wCache = window._weeklySalesCache || [];
+  let recentTotal = 0, recentDays = 0;
+  if (wCache.length >= 3 && daysElapsed >= 14) {
+    // 2週間以上経過していれば直近2週間のデータを使用
+    const last   = wCache[wCache.length-1]?.cumulative || 0;
+    const prev14 = wCache[wCache.length-3]?.cumulative || 0;
+    recentTotal = last - prev14;
+    recentDays  = 14;
+  } else {
+    // 2週間未満は販売開始からの全期間平均
+    recentTotal = grandTotal;
+    recentDays  = daysElapsed;
+  }
+  const dailyPace = recentDays > 0 ? recentTotal / recentDays : 0;
+  const forecast     = Math.round(grandTotal + dailyPace * daysLeft);
+  const breakForecast= forecast;
+  const dailyNeeded  = daysLeft > 0 ? Math.ceil((21228 - grandTotal) / daysLeft) : 0;
+  const breakNeeded  = daysLeft > 0 ? Math.ceil((16920 - grandTotal) / daysLeft) : 0;
+
+  // 先週・先々週
+  let lastWeek = 0, prevWeek = 0;
+  if (wCache.length >= 2) {
+    const n = wCache.length;
+    lastWeek = (wCache[n-1]?.cumulative||0) - (wCache[n-2]?.cumulative||0);
+    if (wCache.length >= 3) prevWeek = (wCache[n-2]?.cumulative||0) - (wCache[n-3]?.cumulative||0);
+  }
+  const weekTrendPct = prevWeek > 0 ? ((lastWeek - prevWeek) / prevWeek * 100) : null;
+
+  // 現フェーズ判定と残り日数・必要ペース
+  const phaseEndDates = { a:'2026-04-30', b:'2026-06-19', c:'2026-08-25', d:'2026-09-04' };
+  let currentPhase = 'd';
+  const todayStr = `${today2.getFullYear()}-${String(today2.getMonth()+1).padStart(2,'0')}-${String(today2.getDate()).padStart(2,'0')}`;
+  if (todayStr <= '2026-04-30') currentPhase = 'a';
+  else if (todayStr <= '2026-06-19') currentPhase = 'b';
+  else if (todayStr <= '2026-08-25') currentPhase = 'c';
+  const phaseEnd      = makeDate(phaseEndDates[currentPhase]);
+  const phaseDaysLeft = Math.max(0, Math.floor((phaseEnd - today2) / 86400000));
+  const phaseTarget   = phaseTargets[currentPhase] || 0;
+  const phaseActual   = (phaseGroups[currentPhase]||[]).reduce((s,r) => s+(rowTotals[r]?.total||0), 0) + (busByPhase[currentPhase]||0);
+  const phaseRemain   = Math.max(0, phaseTarget - phaseActual);
+  const phaseDailyNeeded = phaseDaysLeft > 0 ? Math.ceil(phaseRemain / phaseDaysLeft) : 0;
+
+  const setE = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+  setE('pace-forecast',    forecast.toLocaleString() + '枚');
+  const paceLabel = daysElapsed >= 14 ? '直近2週間' : `販売開始から${daysElapsed}日間`;
+  setE('pace-daily-avg', `1日平均：${Math.round(dailyPace).toLocaleString()}枚/日（${paceLabel}）`);
+  setE('daily-needed',     dailyNeeded > 0 ? dailyNeeded.toLocaleString() + '枚/日' : '達成済 🎉');
+  setE('break-daily-needed', breakNeeded > 0 ? `損益分岐：${breakNeeded.toLocaleString()}枚/日` : '損益分岐達成済 ✅');
+  setE('days-remain',      daysLeft.toLocaleString() + '日');
+  setE('phase-days-remain', `現フェーズ残り：${phaseDaysLeft}日`);
+  setE('phase-daily-needed', phaseDaysLeft > 0 ? phaseDailyNeeded.toLocaleString() + '枚/日' : '終了');
+  setE('phase-needed-detail', `フェーズ残枚数：${phaseRemain.toLocaleString()}枚`);
+  setE('break-forecast',   breakForecast >= 16920 ? `${breakForecast.toLocaleString()}枚 ✅` : `${breakForecast.toLocaleString()}枚 ⚠️`);
+
+  const trendEl = document.getElementById('week-trend');
+  if (trendEl) {
+    if (weekTrendPct !== null) {
+      trendEl.textContent = (weekTrendPct >= 0 ? '+' : '') + weekTrendPct.toFixed(1) + '%';
+      trendEl.style.color = weekTrendPct >= 0 ? 'var(--green)' : 'var(--red)';
+    } else { trendEl.textContent = '—'; }
+  }
+  setE('week-detail', `先週：${lastWeek.toLocaleString()}枚 / 先々週：${prevWeek.toLocaleString()}枚`);
   const kpiPgOnly = document.getElementById('kpi-pg-only');
   if (kpiPgOnly) kpiPgOnly.textContent = pgTotal.toLocaleString() + '枚';
 
