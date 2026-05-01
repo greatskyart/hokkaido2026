@@ -3200,7 +3200,7 @@ function calcSales() {
   const daysTotal   = Math.floor((eventDate - startDate) / 86400000) + 1;
 
   // 直近2週間 or 実績日数（短い方）の平均ペース
-  const wCache = window._weeklySalesCache || [];
+  const wCache = window._weeklySalesCacheWithBus || window._weeklySalesCache || [];
   let recentTotal = 0, recentDays = 0;
   if (wCache.length >= 3 && daysElapsed >= 14) {
     // 2週間以上経過していれば直近2週間のデータを使用
@@ -3520,7 +3520,7 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
   if (salesCharts.trend) salesCharts.trend.destroy();
   const tCtx = document.getElementById('trendChart')?.getContext('2d');
   if (tCtx) {
-    const weeks = window._weeklySalesCache || [];
+    const weeks = window._weeklySalesCacheWithBus || window._weeklySalesCache || [];
     const labels  = weeks.length ? weeks.map(w=>w.label)      : ['現在'];
     const actuals = weeks.length ? weeks.map(w=>w.cumulative)  : [pgTotal];
     salesCharts.trend = new Chart(tCtx, {
@@ -4047,37 +4047,33 @@ function parseAllSheets(json) {
     trendRows.forEach((row, i) => {
       if (i < 3) return;
       const dateStr = row[1] ? String(row[1]).substring(0, 10) : null;
-      const pgTotal = parseFloat(row[9]) || 0;
-      if (dateStr && dateStr.match(/^\d{4}-\d{2}-\d{2}/) && pgTotal > 0) {
-        daily.push({ dateStr, pgTotal });
+      const totalCumul = parseFloat(row[11]) || 0; // L列(index11)：PG＋バス系累計
+      if (dateStr && dateStr.match(/^\d{4}-\d{2}-\d{2}/) && totalCumul > 0) {
+        daily.push({ dateStr, totalCumul });
       }
     });
 
-    // 月〜日曜でグループ化
+    // 日曜日のデータのみ週次グラフに使用
     const weekMap = {};
-    daily.forEach(({ dateStr, pgTotal }) => {
-      const d = new Date(dateStr);
-      // 月曜起点の週番号を計算
-      const day = d.getDay(); // 0=日, 1=月
-      const diff = (day === 0) ? -6 : 1 - day; // 月曜へのオフセット
+    daily.forEach(({ dateStr, totalCumul }) => {
+      const d = new Date(dateStr.replace(/-/g, '/'));
+      if (d.getDay() !== 0) return; // 日曜日（0）以外はスキップ
+      // 月曜起点のラベルを計算
       const monday = new Date(d);
-      monday.setDate(d.getDate() + diff);
-      const sunday = new Date(monday);
-      sunday.setDate(monday.getDate() + 6);
-      const mStr = monday.toISOString().substring(0, 10);
-      const sStr = sunday.toISOString().substring(0, 10);
+      monday.setDate(d.getDate() - 6);
+      const mStr = `${monday.getFullYear()}-${String(monday.getMonth()+1).padStart(2,'0')}-${String(monday.getDate()).padStart(2,'0')}`;
+      const sStr = dateStr; // 日曜日
       const label = `${mStr.substring(5)}〜${sStr.substring(5)}`;
-      if (!weekMap[mStr]) weekMap[mStr] = { label, total: 0 };
-      weekMap[mStr].total += pgTotal;
+      weekMap[mStr] = { label, cumulative: totalCumul };
     });
 
-    // 累計に変換
-    let cum = 0;
+    // 各週の最終日累計値をそのまま使用（L列がすでに累計のため積み上げ不要）
     const weeklyCum = Object.keys(weekMap).sort().map(key => {
-      cum += weekMap[key].total;
-      return { label: weekMap[key].label, weekTotal: weekMap[key].total, cumulative: cum };
+      const w = weekMap[key];
+      return { label: w.label, cumulative: w.cumulative };
     });
     window._weeklySalesCache = weeklyCum;
+    window._weeklySalesCacheWithBus = weeklyCum; // L列はPG+バス系込みのため同一
   }
 
   // ダッシュボードの販売集計inputに反映
