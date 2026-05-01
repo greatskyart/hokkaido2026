@@ -3328,11 +3328,11 @@ function calcSales() {
   });
 
   // 席種別枚数・売上（PG）
-  const shibaSPg = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal2(r),0);
-  const shibaNPg = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal2(r),0);
-  const shibaJ   = getRowVal2('c9');
+  const shibaSPg = ['a1','a2','a3','a4','a5','a6','a7','b1','b2','b3','b4','b5','b6','b7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaNPg = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7','d1','d2','d3','d4','d5','d6','d7'].reduce((s,r)=>s+getRowVal2(r),0);
+  const shibaJ   = getRowVal2('c9') + getRowVal2('d9');
   const premSPg  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal2(r),0);
-  const premNPg  = ['b17','c8'].reduce((s,r)=>s+getRowVal2(r),0);
+  const premNPg  = ['b17','c8','d8'].reduce((s,r)=>s+getRowVal2(r),0);
   const cam      = ['a10','b18'].reduce((s,r)=>s+getRowVal2(r),0);
 
   // バス系込みの合計
@@ -3382,13 +3382,14 @@ function calcSales() {
   setT('rev-summary-net',      wan(netTotal));
 
   // グラフ更新
-  updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows: rowTotals, colTotals });
+  updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows: rowTotals, colTotals,
+    seatData: { shibaS, shibaN, premS, premN, shibaJ, cam } });
 }
 
 // ── グラフ ──
 let salesCharts = {};
 
-function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows, colTotals }) {
+function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue, busRevenue, pgRows, colTotals, seatData: sd }) {
   const getPhaseTotal = (rows) => {
     let t = 0;
     rows.forEach(row => ['rc','rt','rx','kk'].forEach(col => {
@@ -3446,32 +3447,16 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
 
   const getRowVal = (row) => parseInt(document.querySelector(`.row-total[data-row="${row}"]`)?.textContent?.replace(/,/g,'')) || 0;
 
-  // バス系を席種別に集計（his_t1/t2→先行入場芝席、his_t3/t4→先行入場プレミアム）
-  let _busShiba = 0, _busPrem = 0, _busShibaS = 0, _busPremS = 0;
-  document.querySelectorAll('.bus-input').forEach(el => {
-    const v = parseInt(el.value)||0;
-    const key = el.dataset.key||'';
-    const price = parseInt(el.dataset.price)||0;
-    if (key === 'his_t1' || key === 'his_t2') {
-      _busShibaS += v; // 先行入場芝席（HISバスパック）
-    } else if (key === 'his_t3' || key === 'his_t4') {
-      _busPremS += v;  // 先行入場プレミアム（HISバスパック）
-    } else if (price <= 5500) {
-      _busShiba += v;  // 通常芝席（その他バス系）
-    } else {
-      _busPrem += v;   // 通常プレミアム（その他バス系）
-    }
-  });
-
-  const _shibaSPg = ['a1','a2','a3','a4','a5','a6','a7'].reduce((s,r)=>s+getRowVal(r),0);
-  const _shibaNPg = ['b8','b9','b10','b11','b12','b13','b14','c1','c2','c3','c4','c5','c6','c7'].reduce((s,r)=>s+getRowVal(r),0);
-  const _shibaJ   = getRowVal('c9');
-  const _premSPg  = ['a8','a9','b15','b16'].reduce((s,r)=>s+getRowVal(r),0);
-  const _premNPg  = ['b17','c8'].reduce((s,r)=>s+getRowVal(r),0);
-  const _cam      = ['a10','b18'].reduce((s,r)=>s+getRowVal(r),0);
+  // calcSalesから受け取った席種別集計を使用（二重集計を避ける）
+  const _shibaSPg = sd?.shibaS || 0;
+  const _shibaNPg = sd?.shibaN || 0;
+  const _shibaJ   = sd?.shibaJ || 0;
+  const _premSPg  = sd?.premS  || 0;
+  const _premNPg  = sd?.premN  || 0;
+  const _cam      = sd?.cam    || 0;
 
   const seatLabels = ['先行入場芝席（PG＋バス系）','通常芝席（PG＋バス系）','先行入場プレミアム（PG＋バス系）','通常プレミアム（PG＋バス系）','芝自由上段','カメラマン'];
-  const seatData   = [_shibaSPg+_busShibaS, _shibaNPg+_busShiba, _premSPg+_busPremS, _premNPg+_busPrem, _shibaJ, _cam];
+  const seatData   = [_shibaSPg, _shibaNPg, _premSPg, _premNPg, _shibaJ, _cam];
   const seatColors = ['#1A5FA0','#2E8FD4','#1A8C50','#2EB870','#C89010','#8AACCB'];
   const seatTotal  = seatData.reduce((a,b)=>a+b,0);
 
@@ -3513,8 +3498,8 @@ function updateSalesCharts({ pgTotal, busTotal, jimuTotal, grandTotal, pgRevenue
   // 数値サマリーバッジ
   const summaryEl = document.getElementById('seat-summary');
   if (summaryEl) {
-    const shibaTotal = _shibaSPg + _busShibaS + _shibaNPg + _busShiba + _shibaJ;
-    const premTotal  = _premSPg + _busPremS + _premNPg + _busPrem;
+    const shibaTotal = _shibaSPg + _shibaNPg + _shibaJ;
+    const premTotal  = _premSPg + _premNPg;
     const summaryItems = [
       { label:'芝席 合計（PG＋バス系）', val: shibaTotal, color:'#1A5FA0' },
       { label:'プレミアム 合計（PG＋バス系）', val: premTotal, color:'#1A8C50' },
@@ -4255,20 +4240,8 @@ function parseAllSheets(json) {
     const breakBar = document.getElementById('kpi-break-bar');
     if (breakBar) breakBar.style.width = Math.min(100, (grand/16920*100).toFixed(1)) + '%';
 
-    // グラフ更新
-    const pgRevenue = (pgTotals['ローチケ']||0)*7000 + (pgTotals['楽チケ']||0)*7000 +
-                      (pgTotals['楽天Exp']||0)*5500 + (pgTotals['KKDAY']||0)*5500;
-    updateSalesCharts({
-      pgTotal: pgVal, busTotal: busVal, jimuTotal: 0,
-      grandTotal: grand,
-      pgRevenue, busRevenue: busVal * 6000,
-      pgRows: {}, colTotals: {
-        rc: pgTotals['ローチケ']||0,
-        rt: pgTotals['楽チケ']||0,
-        rx: pgTotals['楽天Exp']||0,
-        kk: pgTotals['KKDAY']||0,
-      }
-    });
+    // グラフ・全集計をcalcSales()で一括更新
+    calcSales();
   }, 100);
 }
 
