@@ -3194,26 +3194,16 @@ function calcSales() {
   // タイムゾーンずれを避けるためローカル日付で生成
   const makeDate = (str) => { const [y,m,d] = str.split('-').map(Number); return new Date(y, m-1, d); };
   const eventDate = makeDate('2026-09-05');
-  const startDate = makeDate('2026-04-24');
-  const daysElapsed = Math.max(1, Math.floor((today2 - startDate) / 86400000) + 1); // 当日含む
+  const startDate = makeDate('2026-04-25'); // 4/24は数時間のみのため4/25を1日目とする
+  const daysElapsed = Math.max(1, Math.floor((today2 - startDate) / 86400000) + 1); // 4/25を1日目として当日含む
   const daysLeft    = Math.max(0, Math.floor((eventDate - today2) / 86400000));
   const daysTotal   = Math.floor((eventDate - startDate) / 86400000) + 1;
 
   // 直近2週間 or 実績日数（短い方）の平均ペース
   const wCache = window._weeklySalesCacheWithBus || window._weeklySalesCache || [];
-  let recentTotal = 0, recentDays = 0;
-  if (wCache.length >= 3 && daysElapsed >= 14) {
-    // 2週間以上経過していれば直近2週間のデータを使用
-    const last   = wCache[wCache.length-1]?.cumulative || 0;
-    const prev14 = wCache[wCache.length-3]?.cumulative || 0;
-    recentTotal = last - prev14;
-    recentDays  = 14;
-  } else {
-    // 2週間未満は販売開始からの全期間平均
-    recentTotal = grandTotal;
-    recentDays  = daysElapsed;
-  }
-  const dailyPace = recentDays > 0 ? recentTotal / recentDays : 0;
+  // ペース：販売開始からの全期間平均（日曜限定の週次キャッシュより正確）
+  const dailyPace = daysElapsed > 0 ? grandTotal / daysElapsed : 0;
+  const paceLabel = `販売開始から${daysElapsed}日間`;
   const forecast     = Math.round(grandTotal + dailyPace * daysLeft);
   const breakForecast= forecast;
   const dailyNeeded  = daysLeft > 0 ? Math.ceil((21228 - grandTotal) / daysLeft) : 0;
@@ -3244,8 +3234,8 @@ function calcSales() {
 
   const setE = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
   setE('pace-forecast',    forecast.toLocaleString() + '枚');
-  const paceLabel = daysElapsed >= 14 ? '直近2週間' : `販売開始から${daysElapsed}日間`;
-  setE('pace-daily-avg', `1日平均：${Math.round(dailyPace).toLocaleString()}枚/日（${paceLabel}）`);
+  const paceLabel2 = daysElapsed >= 14 ? '直近2週間' : `販売開始から${daysElapsed}日間`;
+  setE('pace-daily-avg', `1日平均：${Math.round(dailyPace).toLocaleString()}枚/日（${paceLabel2}）`);
   setE('daily-needed',     dailyNeeded > 0 ? dailyNeeded.toLocaleString() + '枚/日' : '達成済 🎉');
   setE('break-daily-needed', breakNeeded > 0 ? `損益分岐：${breakNeeded.toLocaleString()}枚/日` : '損益分岐達成済 ✅');
   setE('days-remain',      daysLeft.toLocaleString() + '日');
