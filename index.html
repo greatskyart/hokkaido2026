@@ -2470,13 +2470,17 @@ svg .area:hover{opacity:.8;}
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtn_2" data-price="20000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtn_2">¥0</td>
         </tr>
-        <!-- JTB idx18 -->
-        <tr><td style="font-weight:800;">JTB</td>
+        <!-- JTB idx18〜19（椅子席追加） -->
+        <tr><td rowspan="2" style="font-weight:800;">JTB</td>
           <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtb_1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtb_1">¥0</td>
         </tr>
-        <!-- クラツー idx19〜20 -->
+        <tr><td style="font-size:11px;">椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="jtb_2" data-price="9000" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="jtb_2">¥0</td>
+        </tr>
+        <!-- クラツー idx20〜21 -->
         <tr><td rowspan="2" style="font-weight:800;">クラツー</td>
           <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="club_1" data-price="5500" min="0" value="0"></td>
@@ -2486,7 +2490,7 @@ svg .area:hover{opacity:.8;}
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="club_2" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="club_2">¥0</td>
         </tr>
-        <!-- ほっとバス idx21〜22 -->
+        <!-- ほっとバス idx22〜23 -->
         <tr><td rowspan="2" style="font-weight:800;">ほっとバス</td>
           <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="hot_1" data-price="5500" min="0" value="0"></td>
@@ -2496,11 +2500,15 @@ svg .area:hover{opacity:.8;}
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="hot_2" data-price="9000" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="hot_2">¥0</td>
         </tr>
-        <!-- 札幌通運 idx23 -->
-        <tr><td style="font-weight:800;">札幌通運</td>
+        <!-- 札幌通運 idx24〜25（椅子席追加） -->
+        <tr><td rowspan="2" style="font-weight:800;">札幌通運</td>
           <td style="font-size:11px;">芝席</td>
           <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="ts1" data-price="5500" min="0" value="0"></td>
           <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="ts1">¥0</td>
+        </tr>
+        <tr><td style="font-size:11px;">椅子席</td>
+          <td style="text-align:center;"><input type="number" class="sales-input bus-input" data-key="ts2" data-price="9000" min="0" value="0"></td>
+          <td style="text-align:center;font-size:11px;" class="bus-revenue" data-key="ts2">¥0</td>
         </tr>
         <tr style="background:#EDF3F8;">
           <td colspan="2"><strong>ツアー系 合計</strong></td>
@@ -3992,11 +4000,13 @@ function parseAllSheets(json) {
       [16, 'jtn_1'],    // JTN外商 椅子席（idx16）
       [17, 'jtn_2'],    // JTN外商 最前列椅子席（idx17）
       [18, 'jtb_1'],    // JTB 芝席（idx18）
-      [19, 'club_1'],   // クラツー 芝席（idx19）
-      [20, 'club_2'],   // クラツー 椅子席（idx20）
-      [21, 'hot_1'],    // ほっとバス 芝席（idx21）
-      [22, 'hot_2'],    // ほっとバス 椅子席（idx22）
-      [23, 'ts1'],      // 札幌通運 芝席（idx23）
+      [19, 'jtb_2'],    // JTB 椅子席（idx19）★新規追加
+      [20, 'club_1'],   // クラツー 芝席（idx20）
+      [21, 'club_2'],   // クラツー 椅子席（idx21）
+      [22, 'hot_1'],    // ほっとバス 芝席（idx22）
+      [23, 'hot_2'],    // ほっとバス 椅子席（idx23）
+      [24, 'ts1'],      // 札幌通運 芝席（idx24）
+      [25, 'ts2'],      // 札幌通運 椅子席（idx25）★新規追加
     ];
 
     // ツアーシートのデータを確認（デバッグ）
@@ -4025,7 +4035,7 @@ function parseAllSheets(json) {
     for (let i = tourRows.length - 1; i >= 6; i--) {
       const dateVal = tourRows[i][1];
       if (!dateVal || !String(dateVal).match(/\d{4}-\d{2}-\d{2}|Date\(/)) continue;
-      const v = parseFloat(tourRows[i][24]);  // idx24=日計列(col25)
+      const v = parseFloat(tourRows[i][26]);  // idx26=日計列(col27)
       if (!isNaN(v) && v > 0) { pgTotals['ツアー'] = v; break; }
     }
   }
