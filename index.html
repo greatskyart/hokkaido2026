@@ -4169,6 +4169,7 @@ function parseAllSheets(json) {
     // ③通常芝席(col11〜17)→c1〜c7, 通常プレミアム(col20)→c8
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`c${i+1}`, 'rc', rc.ph3(ci)));
     setVal('c8', 'rc', rc.ph3(20));
+    setVal('c9', 'rc', rc.ph3(22));  // ローチケ 芝自由上段=idx22
   }
 
   // 楽チケ反映
@@ -4184,6 +4185,7 @@ function parseAllSheets(json) {
     setVal('b18', 'rt', rt.ph2(21));
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`c${i+1}`, 'rt', rt.ph3(ci)));
     setVal('c8', 'rt', rt.ph3(20));
+    setVal('c9', 'rt', rt.ph3(22));  // 楽チケ 芝自由上段=idx22
   }
 
   // 楽天Exp反映（通常芝col4〜6→②b8〜b10/③c1〜c3、芝自由col7→③c9）
