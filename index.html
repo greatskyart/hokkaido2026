@@ -4085,6 +4085,7 @@ function parseAllSheets(json) {
     '①': '2026-04-30',
     '②': '2026-06-19',
     '③': '2026-08-25',
+    '④': '2026-09-04',
   };
 
   // ISO日付文字列から日付部分（YYYY-MM-DD）を取得
@@ -4141,10 +4142,13 @@ function parseAllSheets(json) {
     const v1to2 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['②']);
     // ③終了時点の累計
     const v1to3 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['③']);
+    // ④終了時点の累計
+    const v1to4 = getPhaseColValues(rows, PHASE_STARTS['①'], PHASE_ENDS['④']);
     return {
       ph1: (ci) => v1[ci] || 0,
       ph2: (ci) => Math.max(0, (v1to2[ci]||0) - (v1[ci]||0)),
       ph3: (ci) => Math.max(0, (v1to3[ci]||0) - (v1to2[ci]||0)),
+      ph4: (ci) => Math.max(0, (v1to4[ci]||0) - (v1to3[ci]||0)),
     };
   };
 
@@ -4170,6 +4174,10 @@ function parseAllSheets(json) {
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`c${i+1}`, 'rc', rc.ph3(ci)));
     setVal('c8', 'rc', rc.ph3(20));
     setVal('c9', 'rc', rc.ph3(22));  // ローチケ 芝自由上段=idx22
+    // ④一般販売
+    [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`d${i+1}`, 'rc', rc.ph4(ci)));
+    setVal('d8', 'rc', rc.ph4(20));
+    setVal('d9', 'rc', rc.ph4(22));
   }
 
   // 楽チケ反映
@@ -4186,24 +4194,35 @@ function parseAllSheets(json) {
     [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`c${i+1}`, 'rt', rt.ph3(ci)));
     setVal('c8', 'rt', rt.ph3(20));
     setVal('c9', 'rt', rt.ph3(22));  // 楽チケ 芝自由上段=idx22
+    // ④一般販売
+    [11,12,13,14,15,16,17].forEach((ci, i) => setVal(`d${i+1}`, 'rt', rt.ph4(ci)));
+    setVal('d8', 'rt', rt.ph4(20));
+    setVal('d9', 'rt', rt.ph4(22));
   }
 
   // 楽天Exp反映（通常芝col4〜6→②b8〜b10/③c1〜c3、芝自由col7→③c9）
   if (rxRows2) {
     const rx = getPhaseRows(rxRows2);
-    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+8}`, 'rx', rx.ph2(ci)));  // 楽天Exp通常芝7エリア
-    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`c${i+1}`, 'rx', rx.ph3(ci)));  // 楽天Exp通常芝7エリア
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+8}`, 'rx', rx.ph2(ci)));
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`c${i+1}`, 'rx', rx.ph3(ci)));
     setVal('c9', 'rx', rx.ph3(11));  // 楽天Exp芝自由上段=idx11
+    // ④一般販売
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`d${i+1}`, 'rx', rx.ph4(ci)));
+    setVal('d9', 'rx', rx.ph4(11));
   }
 
-  // KKDAY反映（通常芝col4〜6、プレミアムcol7、芝自由col8）
+  // KKDAY反映
   if (kkRows2) {
     const kk = getPhaseRows(kkRows2);
-    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+8}`, 'kk', kk.ph2(ci)));  // KKDAY通常芝7エリア
-    setVal('b17', 'kk', kk.ph2(11));  // KKDAYプレミアム=idx11
-    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`c${i+1}`, 'kk', kk.ph3(ci)));  // KKDAY通常芝7エリア
-    setVal('c8', 'kk', kk.ph3(11));  // KKDAYプレミアム=idx11
-    setVal('c9', 'kk', kk.ph3(12));  // KKDAY芝自由上段=idx12
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`b${i+8}`, 'kk', kk.ph2(ci)));
+    setVal('b17', 'kk', kk.ph2(11));
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`c${i+1}`, 'kk', kk.ph3(ci)));
+    setVal('c8', 'kk', kk.ph3(11));
+    setVal('c9', 'kk', kk.ph3(12));
+    // ④一般販売
+    [4,5,6,7,8,9,10].forEach((ci, i) => setVal(`d${i+1}`, 'kk', kk.ph4(ci)));
+    setVal('d8', 'kk', kk.ph4(11));
+    setVal('d9', 'kk', kk.ph4(12));
   }
 
   // ── bus-inputへの反映（calcSalesより前に実行） ──
